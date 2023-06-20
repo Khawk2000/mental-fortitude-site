@@ -42,6 +42,10 @@ const workoutSchema = new Schema({
         default: Date.now,
         unique: true
     },
+    title: {
+        type: String,
+        required: true
+    },
     exercise: [{
         type: exerciseSchema,
         required: true

@@ -30,6 +30,7 @@ const createWorkout = async (req, res) => {
     
     //clean this up later
     const day = req.body.day
+    const title = req.body.title
     const type = req.body.exercise.type
     const name = req.body.exercise.name 
     const exercise = req.body.exercise
@@ -41,7 +42,7 @@ const createWorkout = async (req, res) => {
     
     // add doc to db
     try{
-        const workout = await Workout.create({day, exercise, type, name, rounds, duration, distance, reps, weight})
+        const workout = await Workout.create({day, title, exercise, type, name, rounds, duration, distance, reps, weight})
         res.status(200).json(workout)
     } catch (error) {
         res.status(400).json({error: error.message})
