@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 //components
 import WorkoutPreview from '../components/WorkoutPreview'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
 
@@ -24,7 +25,9 @@ const Home = () => {
         <div className="home">
             <div className="workouts">
                 {workouts && workouts.map((workout) => (
-                    <WorkoutPreview key={workout._id} workout={workout}/>
+                    <Link to={`/${workout._id}`}>
+                        <WorkoutPreview key={workout._id} workout={workout}/>
+                    </Link>
                 ))}
             </div>
         </div>

@@ -1,7 +1,6 @@
 
 //Need to make separate page for workout details similar to blogs 
 const WorkoutPreview = ({ workout }) => {
-    console.log(workout)
     const {day, title} = workout;
     return(
         <div className="workout-preview">
