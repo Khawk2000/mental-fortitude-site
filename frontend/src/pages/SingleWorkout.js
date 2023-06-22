@@ -7,7 +7,7 @@ import WorkoutDetails from '../components/WorkoutDetails'
 const SingleWorkout = () => {
 
     const { id } = useParams()
-
+    const [isPending, setIsPending] = useState(true)
     const [workout, setWorkout] = useState(null)
 
     useEffect(() => {
@@ -16,6 +16,7 @@ const SingleWorkout = () => {
             const json = await response.json()
             if (response.ok) {
                 setWorkout(json)
+                setIsPending(false)
             }
         }
         fetchWorkout()
@@ -24,6 +25,7 @@ const SingleWorkout = () => {
     return (
         <div className="single-workout">
             <div className="workout-details">
+                {isPending && <h1>Loading...</h1>}
                 {workout && <WorkoutDetails workout={workout}/>}
             </div>
         </div>
