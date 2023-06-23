@@ -5,7 +5,6 @@ import WorkoutPreview from '../components/WorkoutPreview'
 import { Link } from 'react-router-dom'
 
 const Home = () => {
-
     const [workouts, setWorkouts] = useState(null)
     const [isPending, setIsPending] = useState(true)
     useEffect(() => {
@@ -31,6 +30,7 @@ const Home = () => {
                         <WorkoutPreview key={workout._id} workout={workout}/>
                     </Link>
                 ))}
+                {!isPending && <Link to='/createworkout'>Create Workout</Link>}
             </div>
         </div>
     )
