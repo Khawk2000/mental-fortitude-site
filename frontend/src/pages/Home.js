@@ -26,11 +26,14 @@ const Home = () => {
             <div className="workouts">
                 {isPending && <h1>Loading...</h1>}
                 {workouts && workouts.map((workout) => (
-                    <Link to={`/${workout._id}`}>
+                    <a href='/'><Link to={`/${workout._id}`}>
                         <WorkoutPreview key={workout._id} workout={workout}/>
                     </Link>
+                    </a>
                 ))}
-                {!isPending && <Link to='/createworkout'>Create Workout</Link>}
+                {!isPending && <div className="center-button">
+                    <a href='/createworkout' className='create-button'>Create Workout</a>
+                    </div>}
             </div>
         </div>
     )
