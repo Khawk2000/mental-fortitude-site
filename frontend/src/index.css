@@ -1,32 +1,54 @@
 /* google font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;&family=VT323&display=swap');
 
 /* layout styles */
 :root {
-  --primary: rgb(39, 238, 39);
+  --primary: #e3c87a;
+  --secondary: #1d1c1c;
+  --tirceary: #9d5c63;
+  --fourth: #966b9d;
+  --fifth: #da7d87;
   --error: crimson;
 }
 body {
-  background: peachpuff;
+  background: var(--tirceary);
   margin: 0;
-  font-family: "Poppins";
+  font-family: "PT Sans", sans-serif;
 }
 header {
-  background: whitesmoke;
+  background: var(--secondary);
 }
 header .container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 10px 20px;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   text-decoration: none;
+}
+.container h1 {
+  position: relative;
+  top: 5px;
+  font-size: 60px;
+  padding: 0;
+  margin: 0;
+  color: var(--primary);
+  font-weight: normal;
 }
 header a{
-  color: darkblue;
+  color: var(--primary);
   text-decoration: none;
+  font-size: 16px;
 }
+
+.App-Logo {
+  width: 100px;
+  padding: 0;
+  margin: 0;
+}
+
 .pages {
   max-width: 1400px;
   padding: 20px;
@@ -55,9 +77,9 @@ header a{
   transition: all 0.3s ease;
   position: relative;
   display: inline-block;
-  border: 2px solid rgb(39, 238, 39);
+  border: 2px solid var(--primary);
   z-index: 1;
-  color: black;
+  color: white;
 }
 .create-button:after {
   position: absolute;
@@ -69,11 +91,11 @@ header a{
   right: 0;
   direction: ltr;
   z-index: -1;
-  background: rgb(39, 238, 39);
+  background: var(--primary);
   transition: all 0.3s ease;
 }
 .create-button:hover {
-  color: white;
+  color: black;
 }
 .create-button:hover:after {
   left: 0;
@@ -81,7 +103,7 @@ header a{
   width: 100%;
 }
 .workout-preview {
-  background: whitesmoke;
+  background: var(--fourth);
   border-radius: 4px;
   margin: 20px auto;
   padding: 20px;
@@ -96,7 +118,7 @@ header a{
 .workout-preview p{
   margin: 0;
   font-size: 0.9em;
-  color: #555;
+  color: var(--secondary);
   text-decoration: none;
 }
 
@@ -120,69 +142,28 @@ header a{
 }
 
 .exercise-table th {
-  background-color: var(--primary);
-  color: #fff;
+  background-color: var(--secondary);
+  color: var(--primary);
   font-weight: bold;
   padding: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  border-top: 1px solid #fff;
-  border-bottom: 1px solid #ccc;
+  border-top: 1px solid var(--secondary);
+  border-bottom: 1px solid var(--secondary);
 }
 
 .exercise-table tr:nth-child(even) td {
-  background-color: #4cf854;
+  background-color: var(--tirceary);
 }
 
 .exercise-table tr:hover td {
-  background-color: #0dd4d7;
+  background-color: var(--primary);
 }
 
 .exercise-table td {
-  background-color: #19c61c;
+  background-color: var(--fifth);
   padding: 10px;
-  border-bottom: 1px solid #ccc;
-  font-weight: bold;
-}
-
-.added-exercise-table {
-  border-collapse: collapse;
-  width: 1000px;
-  color: #333;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  text-align: left;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  margin: auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
-.added-exercise-table th {
-  background-color: var(--primary);
-  color: #fff;
-  font-weight: bold;
-  padding: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border-top: 1px solid #fff;
-  border-bottom: 1px solid #ccc;
-}
-
-.added-exercise-table tr:nth-child(even) td {
-  background-color: #4cf854;
-}
-
-.added-exercise-table tr:hover td {
-  background-color: #0dd4d7;
-}
-
-.added-exercise-table td {
-  background-color: #19c61c;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--secondary);
   font-weight: bold;
 }
 
@@ -216,6 +197,179 @@ header a{
   color: white;
 }
 .delete-workout:hover:after {
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+/** Create Workout Styles **/
+.create-workout {
+  max-width: 1200px;
+  padding: 20px;
+  margin: 0 auto;
+  background-color: var(--fourth);
+  border-radius: 5px;
+}
+.create-workout h3{
+  text-align: center;
+}
+.label-input-container{
+  padding: 10px 0;  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.title-label{
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--secondary);
+  margin-right: 10px;
+}
+.title-input {
+  width: 300px;
+  height: 20px;
+  font-size: 16px;
+}
+.confirm-title-button-container{
+  display: flex;
+  justify-content: center;
+}
+.confirm-title {
+  border-radius: 40px;
+  padding: 10px 25px;
+  background: transparent;
+  outline: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  border: 2px solid var(--primary);
+  z-index: 1;
+  color: white;
+  font-size: 16px;
+}
+.confirm-title:after {
+  position: absolute;
+  content: "";
+  border-radius: 40px;
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  direction: ltr;
+  z-index: -1;
+  background: var(--primary);
+  transition: all 0.3s ease;
+}
+.confirm-title:hover {
+  color: black;
+}
+.confirm-title:hover:after {
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+.eform-input {
+  width: 200px;
+}
+.exercise-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  
+}
+.eform-table {
+  display: flex;
+  justify-content: space-evenly;
+}
+.eform-table input {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+.first-col-eform {
+  display:flex;
+  flex-direction: column;
+}
+.second-col-eform {
+  display: flex;
+  flex-direction: column;
+}
+.add-exercise-container {
+  display: flex;
+  justify-content: center;
+}
+.add-exercise-button {
+  border-radius: 40px;
+  padding: 10px 25px;
+  background: transparent;
+  outline: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  border: 2px solid var(--primary);
+  z-index: 1;
+  color: white;
+  font-size: 16px;
+}
+.add-exercise-button:after {
+  position: absolute;
+  content: "";
+  border-radius: 40px;
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  direction: ltr;
+  z-index: -1;
+  background: var(--primary);
+  transition: all 0.3s ease;
+}
+.add-exercise-button:hover {
+  color: black;
+}
+.add-exercise-button:hover:after {
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+.add-workout-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 40px;
+}
+.add-workout-button {
+  border-radius: 40px;
+  padding: 10px 25px;
+  background: transparent;
+  outline: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  border: 2px solid var(--primary);
+  z-index: 1;
+  color: white;
+  font-size: 16px;
+}
+.add-workout-button:after {
+  position: absolute;
+  content: "";
+  border-radius: 40px;
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  direction: ltr;
+  z-index: -1;
+  background: var(--primary);
+  transition: all 0.3s ease;
+}
+.add-workout-button:hover {
+  color: black;
+}
+.add-workout-button:hover:after {
   left: 0;
   right: 0;
   width: 100%;

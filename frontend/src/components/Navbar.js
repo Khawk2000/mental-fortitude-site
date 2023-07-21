@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import logo from "C:/Users/Keega/MyPortfolio/mental-fortitude-site/frontend/src/MF_Logo.png"
 
 
 const Navbar = () => {
@@ -6,8 +7,10 @@ const Navbar = () => {
         <header>
             <div className="container">
                 <Link to='/'>
-                    <h1>Workout Buddy</h1>
+                    <img src={logo} className='App-Logo' alt="MF Logo"/>
                 </Link>
+                <h1>Workout Buddy</h1>
+                
             </div>
         </header>
     )

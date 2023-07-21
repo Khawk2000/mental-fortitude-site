@@ -55,14 +55,17 @@ const CreateWorkout = () => {
     
     return(
         <div className="create-workout">
-            {titleconfirmed === false && <div>
-                    <label>Title: </label>
-                    <input type='text' onChange={(e) => setTitle(e.target.value)} value={title}/>
-                    <button className='confirm-title' onClick={ConfirmTitle}>Confirm Title</button>
+            {titleconfirmed === false && <div className='title-creation'>
+                    <div className='label-input-container'>
+                        <label className='title-label'>Workout Title: </label>
+                        <input className='title-input'type='text' onChange={(e) => setTitle(e.target.value)} value={title}/>
+                    </div>
+                    <div className="confirm-title-button-container">
+                        <button className='confirm-title' onClick={ConfirmTitle}>Confirm Title</button>
+                    </div>
             </div>}
-            {titleconfirmed === true && <h3>Title: {title}</h3>}
+            {titleconfirmed === true && <h3>Workout Title: {title}</h3>}
             {titleconfirmed === true && <ExerciseForm exercises={exercises} title={title}/>}
-            {titleconfirmed === true && <button onClick={postWorkout}>Add Workout</button>}
             {listExercises.length > 0 && <div>
                 <table className="exercise-table">
                     <tr>
@@ -87,6 +90,9 @@ const CreateWorkout = () => {
                     ))}
                 </table>
             </div>}
+            {listExercises.length > 0 && <div className="add-workout-container">
+                <button className='add-workout-button'onClick={postWorkout}>Add Workout</button>
+                </div>}
             
         </div>
     )
