@@ -37,7 +37,7 @@ const SingleWorkout = () => {
     }
     return (
         <div className="single-workout">
-            <div className="workout-details">
+            <div className="details-container">
                 {isPending && <h1>Loading...</h1>}
                 {workout && <WorkoutDetails workout={workout}/>}
                 {workout && <div className="center-button">

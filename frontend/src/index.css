@@ -110,6 +110,17 @@ header a{
   position: relative;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
+
+.details-container {
+  background: var(--fourth);
+  color: var(--primary);
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
 .workout-preview h2{
   margin: 0 0 10px 0;
   font-size: 1.2em;
@@ -229,6 +240,7 @@ header a{
   width: 300px;
   height: 20px;
   font-size: 16px;
+  border-radius: 5px;
 }
 .confirm-title-button-container{
   display: flex;

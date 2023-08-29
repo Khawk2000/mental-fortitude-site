@@ -73,15 +73,16 @@ const CreateWorkout = () => {
                         <th>Exercise Name</th>
                         <th>Rounds x Reps</th>
                         <th>Weight</th>
-                        <th>Duration</th>
-                        <th>Distance</th>
+                        <th>Duration(min)</th>
+                        <th>Distance(mi)</th>
                         <th>PR</th>
                     </tr>
                     {listExercises && listExercises.map((item, index) => (
                         <tr key={index}>
-                            <td>{item.name}</td>
                             <td>{item.type}</td>
-                            <td>{item.sets.rounds}x{item.sets.reps}</td>
+                            <td>{item.name}</td>
+                            {item.type === "Lift" && <td>{item.sets.rounds}x{item.sets.reps}</td>}
+                            {item.type === "Cardio" && <td></td>}
                             <td>{item.sets.weight}</td>
                             <td>{item.sets.duration}</td>
                             <td>{item.sets.distance}</td>
