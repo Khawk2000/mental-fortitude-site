@@ -20,11 +20,13 @@ const Home = () => {
 
         fetchWorkouts()
     }, [])
+    console.log(workouts)
 
     return (
         <div className="home">
             <div className="workouts">
                 {isPending && <h1>Loading...</h1>}
+                {!isPending && workouts.length === 0 && <h3 className='no-workouts'>You have no current workouts added...</h3>}
                 {workouts && workouts.map((workout) => (
                     <a href='/'><Link to={`/${workout._id}`}>
                         <WorkoutPreview key={workout._id} workout={workout}/>

@@ -38,8 +38,7 @@ const exerciseSchema = new Schema({
 
 const workoutSchema = new Schema({
     day: {
-        type: Date,
-        default: Date.now,
+        type: String,
         unique: true
     },
     title: {

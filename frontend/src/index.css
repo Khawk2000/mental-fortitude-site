@@ -3,11 +3,11 @@
 
 /* layout styles */
 :root {
-  --primary: #e3c87a;
+  --primary: #d4ba75;
   --secondary: #1d1c1c;
-  --tirceary: #9d5c63;
-  --fourth: #966b9d;
-  --fifth: #da7d87;
+  --tirceary: #7286a0;
+  --fourth: #323b48;
+  --fifth: #b2c9ab;
   --error: crimson;
 }
 body {
@@ -68,6 +68,12 @@ header a{
   margin: 0;
   justify-content: center;
 }
+.no-workouts {
+  font-size: 24px;
+  text-align: center;
+  color: var(--secondary);
+}
+
 .create-button {
   border-radius: 40px;
   padding: 10px 25px;
@@ -129,7 +135,7 @@ header a{
 .workout-preview p{
   margin: 0;
   font-size: 0.9em;
-  color: var(--secondary);
+  color: var(--primary);
   text-decoration: none;
 }
 
@@ -178,9 +184,47 @@ header a{
   font-weight: bold;
 }
 
+.home-button {
+  border-radius: 40px;
+  padding: 10px 25px;
+  margin-right: 10px;
+  background: transparent;
+  outline: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  border: 2px solid var(--primary);
+  z-index: 1;
+  color: white;
+  font-size: 16px;
+}
+.home-button:after {
+  position: absolute;
+  content: "";
+  border-radius: 40px;
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  direction: ltr;
+  z-index: -1;
+  background: var(--primary);
+  transition: all 0.3s ease;
+}
+.home-button:hover {
+  color: black;
+}
+.home-button:hover:after {
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
 .delete-workout {
   border-radius: 40px;
   padding: 10px 25px;
+  margin-left: 10px;
   background: transparent;
   outline: none !important;
   cursor: pointer;
@@ -189,7 +233,8 @@ header a{
   display: inline-block;
   border: 2px solid rgb(220, 23, 23);
   z-index: 1;
-  color: black;
+  color: white;
+  font-size: 16px;
 }
 .delete-workout:after {
   position: absolute;
@@ -205,7 +250,7 @@ header a{
   transition: all 0.3s ease;
 }
 .delete-workout:hover {
-  color: white;
+  color: black;
 }
 .delete-workout:hover:after {
   left: 0;
@@ -233,7 +278,7 @@ header a{
 .title-label{
   font-size: 20px;
   font-weight: bold;
-  color: var(--secondary);
+  color: var(--fifth);
   margin-right: 10px;
 }
 .title-input {
@@ -281,6 +326,12 @@ header a{
   right: 0;
   width: 100%;
 }
+.workout-title{
+  font-size: 40px;
+  color: var(--fifth);
+  text-decoration: underline;
+}
+
 .eform-input {
   width: 200px;
 }
@@ -288,7 +339,8 @@ header a{
   display: flex;
   flex-direction: column;
   width: 100%;
-  
+  color: var(--fifth);
+  font-size: 18px;
 }
 .eform-table {
   display: flex;
@@ -297,7 +349,14 @@ header a{
 .eform-table input {
   margin-bottom: 20px;
   font-size: 16px;
+  background-color: var(--tirceary);
+  
 }
+.eform-table input:focus {
+  outline: none !important;
+  border-color: var(--fifth);
+}
+
 .first-col-eform {
   display:flex;
   flex-direction: column;
@@ -321,7 +380,7 @@ header a{
   display: inline-block;
   border: 2px solid var(--primary);
   z-index: 1;
-  color: white;
+  color: var(--fifth);
   font-size: 16px;
 }
 .add-exercise-button:after {

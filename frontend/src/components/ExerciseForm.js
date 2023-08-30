@@ -76,7 +76,7 @@ const ExerciseForm = ({ exercises, title }) => {
                             value={name}
                         />
 
-                        {type === "Cardio" && <label>Distance for exercise: </label>}
+                        {type === "Cardio" && <label>Distance for exercise in miles: </label>}
                         {type === "Cardio" && <input
                             type="number"
                             onChange={(e) => setDistance(e.target.value)}

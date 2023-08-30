@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse, faTrash } from '@fortawesome/free-solid-svg-icons'
+
 
 //components
 import WorkoutDetails from '../components/WorkoutDetails'
@@ -35,13 +38,17 @@ const SingleWorkout = () => {
             }
 
     }
+    const handleHome = () =>{
+        navigate('/')
+    }
     return (
         <div className="single-workout">
             <div className="details-container">
                 {isPending && <h1>Loading...</h1>}
                 {workout && <WorkoutDetails workout={workout}/>}
                 {workout && <div className="center-button">
-                    <button className="delete-workout" onClick={handleDelete}>Delete 🗑️</button>
+                    <button className='home-button' onClick={handleHome}>Home <FontAwesomeIcon icon={faHouse} /></button>
+                    <button className="delete-workout" onClick={handleDelete}>Delete <FontAwesomeIcon icon={faTrash}/></button>
                     </div>}
             </div>
         </div>

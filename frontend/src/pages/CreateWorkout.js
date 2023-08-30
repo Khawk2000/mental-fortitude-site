@@ -9,6 +9,7 @@ const CreateWorkout = () => {
     const [exercise, setExercise] = useState(null)
     const [error, setError] = useState(null)
     const [title, setTitle] = useState('')
+    const [day, setDay] = useState('')
     const [titleconfirmed, setTitleConfirmed] = useState(false)
     const [listExercises, setListExercises] = useState([])
 
@@ -22,10 +23,23 @@ const CreateWorkout = () => {
 
     const ConfirmTitle = () => {
         setTitleConfirmed(true)
+        var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        var currentDate = new Date();
+        var dayOfWeek = weekdays[currentDate.getDay()]
+        var month = currentDate.getMonth() + 1
+        var hours = currentDate.getHours()
+        var timeOfDay = 'am'
+        if(hours > 12){
+            hours = hours - 12
+            timeOfDay = 'pm'
+        }
+        var datetime = dayOfWeek.toString() + ', ' + month + '/' + 
+            currentDate.getDate() + '/' + currentDate.getFullYear() + 
+            ' @ ' + hours + ':' + currentDate.getMinutes() + ' ' + timeOfDay;
+        setDay(datetime)
     }
 
     const postWorkout = async () => {
-        const day = Date.now()
         const workout = {day, title, exercise: listExercises}
         console.log(workout)
         const response = await fetch('api/workouts/createworkout/', {
@@ -64,7 +78,7 @@ const CreateWorkout = () => {
                         <button className='confirm-title' onClick={ConfirmTitle}>Confirm Title</button>
                     </div>
             </div>}
-            {titleconfirmed === true && <h3>Workout Title: {title}</h3>}
+            {titleconfirmed === true && <h3 className='workout-title'>{title}</h3>}
             {titleconfirmed === true && <ExerciseForm exercises={exercises} title={title}/>}
             {listExercises.length > 0 && <div>
                 <table className="exercise-table">
