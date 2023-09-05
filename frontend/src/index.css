@@ -280,16 +280,21 @@ header a{
   font-weight: bold;
   color: var(--fifth);
   margin-right: 10px;
+  margin-top: 7px;
 }
 .title-input {
   width: 300px;
-  height: 20px;
-  font-size: 16px;
+  height: 25px;
+  font-size: 20px;
   border-radius: 5px;
+  color: var(--fifth);
+  background-color: var(--secondary);
+  outline: none;
 }
 .confirm-title-button-container{
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
 .confirm-title {
   border-radius: 40px;
@@ -348,9 +353,18 @@ header a{
 }
 .eform-table input {
   margin-bottom: 20px;
-  font-size: 16px;
-  background-color: var(--tirceary);
-  
+  font-size: 20px;
+  background-color: var(--secondary);
+  color: var(--fifth);
+  height: 25px;
+}
+.eform-table select {
+  background-color: var(--secondary);
+  color: var(--fifth);
+  outline: none;
+  height: 30px;
+  font-size: 20px;
+  margin-bottom: 20px;
 }
 .eform-table input:focus {
   outline: none !important;

@@ -38,12 +38,11 @@ const ExerciseForm = ({ exercises, title }) => {
                 <div className="eform-table">
                     <div className="first-col-eform">
                         <label>Type of Exercise (Lift, Cardio): </label>
-                        <input
-                            required
-                            type="text"
-                            onChange={(e) => setType(e.target.value)}
-                            value={type}
-                        />
+                        <select name='exercise-type' id='exercise-type' onChange={(e) => setType(e.target.value)}>
+                            <option value='Choose' selected disabled>Choose one...</option>
+                            <option value='Lift'>Lift</option>
+                            <option value='Cardio'>Cardio</option>
+                        </select>
                         {type === "Cardio" && <label>Duration of exercise in minutes: </label>}
                         {type === "Cardio" && <input
                             type="number"

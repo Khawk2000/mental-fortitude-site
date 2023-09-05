@@ -25,17 +25,25 @@ const CreateWorkout = () => {
         setTitleConfirmed(true)
         var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
         var currentDate = new Date();
+        var datetime = ''
         var dayOfWeek = weekdays[currentDate.getDay()]
         var month = currentDate.getMonth() + 1
         var hours = currentDate.getHours()
+        var min = currentDate.getMinutes()
         var timeOfDay = 'am'
         if(hours > 12){
             hours = hours - 12
             timeOfDay = 'pm'
         }
-        var datetime = dayOfWeek.toString() + ', ' + month + '/' + 
+        if(min < 10) {
+            datetime = dayOfWeek.toString() + ', ' + month + '/' + 
+            currentDate.getDate() + '/' + currentDate.getFullYear() + 
+            ' @ ' + hours + ':0' + currentDate.getMinutes() + ' ' + timeOfDay;
+        } else {
+        datetime = dayOfWeek.toString() + ', ' + month + '/' + 
             currentDate.getDate() + '/' + currentDate.getFullYear() + 
             ' @ ' + hours + ':' + currentDate.getMinutes() + ' ' + timeOfDay;
+        }
         setDay(datetime)
     }
 
