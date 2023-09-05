@@ -36,60 +36,76 @@ const ExerciseForm = ({ exercises, title }) => {
         <div className="exercise-form">
             <form className="create">
                 <div className="eform-table">
-                    <div className="first-col-eform">
-                        <label>Type of Exercise (Lift, Cardio): </label>
-                        <select name='exercise-type' id='exercise-type' onChange={(e) => setType(e.target.value)}>
-                            <option value='Choose' selected disabled>Choose one...</option>
-                            <option value='Lift'>Lift</option>
-                            <option value='Cardio'>Cardio</option>
-                        </select>
-                        {type === "Cardio" && <label>Duration of exercise in minutes: </label>}
-                        {type === "Cardio" && <input
-                            type="number"
-                            onChange={(e) => setDuration(e.target.value)}
-                            value={duration}
-                        />} 
-                        
-                        {type === "Lift" && <label>Number of Rounds for Exercise: </label>}
-                        {type === "Lift" &&
-                        <input type="number"
-                            onChange={(e) => setRounds(e.target.value)}
-                            value={rounds}
-                        />}
-
-
-                        {type === "Lift" && <label>Weight for exercise: </label>}
-                        {type ==="Lift" &&
-                        <input
-                            type="number"
-                            onChange={(e) => setWeight(e.target.value)}
-                            value={weight}
-                        />}
+                    <div className="eform-row">
+                        <div className="eform-col-1">
+                            <div><label>Type of Exercise (Lift, Cardio): </label></div>
+                            <div><select name='exercise-type' id='exercise-type' onChange={(e) => setType(e.target.value)}>
+                                <option value='Choose' selected disabled>Choose one...</option>
+                                <option value='Lift'>Lift</option>
+                                <option value='Cardio'>Cardio</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div className="eform-col-2">
+                            <label>Name of Exercise: </label>
+                            <input
+                                required
+                                type="text"
+                                onChange={(e) => setName(e.target.value)}
+                                value={name}
+                            />
+                        </div>
                     </div>
-                    <div className="second-col-eform">
-                        <label>Name of Exercise: </label>
-                        <input
-                            required
-                            type="text"
-                            onChange={(e) => setName(e.target.value)}
-                            value={name}
-                        />
-
-                        {type === "Cardio" && <label>Distance for exercise in miles: </label>}
-                        {type === "Cardio" && <input
-                            type="number"
-                            onChange={(e) => setDistance(e.target.value)}
-                            value={distance}
-                        />} 
-                        
-                        {type === "Lift" && <label>Reps for exercise: </label>}
-                        {type ==="Lift" &&
-                        <input
-                            type="number"
-                            onChange={(e) => setReps(e.target.value)}
-                            value={reps}
-                        />}
+                    <div className="eform-row">
+                        <div className="eform-col-1">
+                            {type === "Cardio" && <label>Duration of exercise in minutes: </label>}
+                            {type === "Cardio" && <input
+                                type="number"
+                                onChange={(e) => setDuration(e.target.value)}
+                                value={duration}
+                            />} 
+                        </div>
+                        <div className="eform-col-2">
+                            {type === "Cardio" && <label>Distance for exercise in miles: </label>}
+                            {type === "Cardio" && <input
+                                type="number"
+                                onChange={(e) => setDistance(e.target.value)}
+                                value={distance}
+                            />} 
+                        </div>
                     </div>
+                    <div className="eform-row">
+                        <div className="eform-col-1">
+                            {type === "Lift" && <label>Number of Rounds for Exercise: </label>}
+                            {type === "Lift" &&
+                            <input type="number"
+                                onChange={(e) => setRounds(e.target.value)}
+                                value={rounds}
+                            />}
+                        </div>
+                        <div className="eform-col-2">
+                            {type === "Lift" && <label>Reps for exercise: </label>}
+                            {type ==="Lift" &&
+                            <input
+                                type="number"
+                                onChange={(e) => setReps(e.target.value)}
+                                value={reps}
+                            />}
+                        </div>
+                    </div>
+                    <div className="eform-row">
+                        <div className="eform-col-1">
+                            {type === "Lift" && <label>Weight for exercise: </label>}
+                            {type ==="Lift" &&
+                            <input
+                                type="number"
+                                onChange={(e) => setWeight(e.target.value)}
+                                value={weight}
+                            />}
+                        </div>
+                    </div>
+                        
+                        
                 </div>
                 <div className="add-exercise-container">
                     <button className='add-exercise-button' onClick={handleClick}>Add Exercise</button>
