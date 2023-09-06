@@ -1,34 +1,84 @@
 import { useState } from "react";
 
+import SetsForm from '../components/SetsForm';
+// NEED TO ADD CHECKMARK BUTTON SO EACH TIME THE USER ADDS VALUES TO THE REPS AND WEIGHT FOR A SET IT WONT MESS UP 
+// OTHER SETS
+
+//var sets = []
+
 const ExerciseForm = ({ exercises, title }) => {
     const [type, setType] = useState('');
     const [name, setName] = useState('');
     const [rounds, setRounds] = useState('')
     const [duration, setDuration] = useState('')
     const [distance, setDistance] = useState('')
-    const [reps, setReps] = useState('')
-    const [weight, setWeight] = useState('')
+    const [sets, setSets] = useState([])
+    var usedNums = []
+
+
+    //const [listSets, setListSets] = useState([])
+    var numSets = []
+
+   /* useEffect(() => {
+        if(sets){
+            setListSets([...listSets, sets])
+            setSets(null)
+        }
+        
+    }, [sets, listSets])*/
+
+    const getSets = (data, num) => {
+        if(usedNums.includes(num)){
+            const nextSets = sets.map((d, i) => {
+                if(i === num){
+                    return data
+                }else{
+                    return d
+                }
+            })
+            setSets(nextSets)
+        } else {
+            setSets([...sets, data])
+        }
+        
+        
+        /*if(usedNums.includes(num)){
+            sets.splice(num, 1, data)
+        }else{
+            usedNums.push(num)
+            sets.splice(num, 0, data)
+        }
+        console.log(sets)
+        */
+    }
 
     const handleClick = (e) => {
         e.preventDefault()
         if (type === '' || name === '') {
             alert('Type and Name are both required fields for each exercise')
         } else {
-            let sets = { rounds, duration, distance, reps, weight }
-            let data = { type, name, sets }
+            console.log(sets)
+            //console.log(sets)
+            let data = { type, name, duration, distance, sets }
+            console.log(data)
             exercises(data)
+
             setType('')
             setName('')
             setRounds('')
             setDuration('')
             setDistance('')
-            setReps('')
-            setWeight('')
+
             alert("Exercise added to workout, add more if you need")
-        }
-        
+        }   
     }
 
+    const sendSets = (rounds) => {
+        for(let i=0; i<rounds; i++){
+            numSets.push(<SetsForm getSets={getSets} num={i}/>)
+        }
+        return numSets
+    }
 
     //Maybe when exercise is added, display it in a table below for reference similar to the one in SingleWorkout.js
 
@@ -76,34 +126,17 @@ const ExerciseForm = ({ exercises, title }) => {
                     </div>
                     <div className="eform-row">
                         <div className="eform-col-1">
-                            {type === "Lift" && <label>Number of Rounds for Exercise: </label>}
+                            {type === "Lift" && <label>Number of Sets for Exercise: </label>}
                             {type === "Lift" &&
                             <input type="number"
                                 onChange={(e) => setRounds(e.target.value)}
                                 value={rounds}
                             />}
                         </div>
-                        <div className="eform-col-2">
-                            {type === "Lift" && <label>Reps for exercise: </label>}
-                            {type ==="Lift" &&
-                            <input
-                                type="number"
-                                onChange={(e) => setReps(e.target.value)}
-                                value={reps}
-                            />}
-                        </div>
                     </div>
-                    <div className="eform-row">
-                        <div className="eform-col-1">
-                            {type === "Lift" && <label>Weight for exercise: </label>}
-                            {type ==="Lift" &&
-                            <input
-                                type="number"
-                                onChange={(e) => setWeight(e.target.value)}
-                                value={weight}
-                            />}
-                        </div>
-                    </div>
+                <div className="sets-table">
+                    {rounds > 0 && sendSets(rounds)}
+                </div>                        
                         
                         
                 </div>
