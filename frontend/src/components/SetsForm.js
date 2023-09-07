@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil, faPlus} from '@fortawesome/free-solid-svg-icons';
 
 const SetsForm = ({ getSets, num }) => {
     
@@ -60,8 +62,8 @@ const SetsForm = ({ getSets, num }) => {
                     />}
                 </div>
                 <div className="sets-col-4">
-                    {enabled && <button className="add-set-button" onClick={handleClick}>Add Set</button>}
-                    {!enabled && <button className="edit-set-button" onClick={handleEdit}>Edit Set</button>}
+                    {enabled && <button className="add-set-button" onClick={handleClick}><FontAwesomeIcon icon={faPlus}/><span className="text-from-icon">Add Set</span></button>}
+                    {!enabled && <button className="edit-set-button" onClick={handleEdit}><FontAwesomeIcon icon={faPencil}/><span className="text-from-icon">Edit Set</span></button>}
                 </div>
             </form>
     </div>
