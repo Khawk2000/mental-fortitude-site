@@ -21,46 +21,49 @@ const SetsForm = ({ getSets, num }) => {
     }
 
     return(
-        <div className="eform-row">
+        <div className="sets-form">
             <form className="create-sets">
-            <div className="eform-col-1">
-                <label>Reps for exercise: </label>
-                {enabled && <input
-                    type="number"
-                    onChange={(e) => {
-                        setRep(e.target.value)     
-                    }}
-                    value={rep}
-                />}
-                {!enabled && <input
-                    disabled
-                    type="number"
-                    onChange={(e) => {
-                        setRep(e.target.value)     
-                    }}
-                    value={rep}
-                />}
-            </div>
-        
-            <div className="eform-col-2">
-                <label>Weight for exercise: </label>
-                {enabled && <input
-                    type="number"
-                    onChange={(e) => setWeight(e.target.value)}
-                    value={weight}
-                />}
-                {!enabled && <input
-                    disabled
-                    type="number"
-                    onChange={(e) => setWeight(e.target.value)}
-                    value={weight}
-                />}
-            </div>
-            <div className="add-set-container">
-                {enabled && <button className="add-set-button" onClick={handleClick}>Add Set</button>}
-                {!enabled && <button className="edit-set-button" onClick={handleEdit}>Edit Set</button>}
-            </div>
-        </form>
+                <div className="sets-col-1">
+                    <p>Set {num}: </p>
+                </div>
+                <div className="sets-col-2">
+                    <label>Reps for exercise: </label>
+                    {enabled && <input
+                        type="number"
+                        onChange={(e) => {
+                            setRep(e.target.value)     
+                        }}
+                        value={rep}
+                    />}
+                    {!enabled && <input
+                        disabled
+                        type="number"
+                        onChange={(e) => {
+                            setRep(e.target.value)     
+                        }}
+                        value={rep}
+                    />}
+                </div>
+            
+                <div className="sets-col-3">
+                    <label>Weight for exercise: </label>
+                    {enabled && <input
+                        type="number"
+                        onChange={(e) => setWeight(e.target.value)}
+                        value={weight}
+                    />}
+                    {!enabled && <input
+                        disabled
+                        type="number"
+                        onChange={(e) => setWeight(e.target.value)}
+                        value={weight}
+                    />}
+                </div>
+                <div className="sets-col-4">
+                    {enabled && <button className="add-set-button" onClick={handleClick}>Add Set</button>}
+                    {!enabled && <button className="edit-set-button" onClick={handleEdit}>Edit Set</button>}
+                </div>
+            </form>
     </div>
     )
 }

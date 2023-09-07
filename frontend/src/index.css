@@ -407,7 +407,7 @@ header a{
   display: inline-block;
   border: 2px solid var(--primary);
   z-index: 1;
-  color: var(--fifth);
+  color: white;
   font-size: 16px;
 }
 .add-exercise-button:after {
@@ -468,6 +468,118 @@ header a{
   color: black;
 }
 .add-workout-button:hover:after {
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+/* Sets Form styling */
+.sets-form {
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-sets {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.sets-col-1 {
+  width: 10%;
+  color: var(--primary);
+  float: top;
+  padding-right: 25px;
+  font-size: 26px;
+  font-weight: normal;
+}
+
+.sets-col-2 {
+  width: 32.5%;
+}
+
+.sets-col-3 {
+  width: 32.5%;
+}
+
+.sets-col-4 {
+  width: 15%;
+}
+
+.add-set-button {
+  width: 100%;
+  border-radius: 40px;
+  padding: 10px 25px;
+  background: transparent;
+  outline: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  border: 2px solid #68B35B;
+  z-index: 1;
+  color: white;
+  font-size: 16px;
+}
+.add-set-button:after {
+  position: absolute;
+  content: "";
+  border-radius: 40px;
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  direction: ltr;
+  z-index: -1;
+  background: #68B35B;
+  transition: all 0.3s ease;
+}
+.add-set-button:hover {
+  color: black;
+}
+.add-set-button:hover:after {
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.edit-set-button {
+  width: 100%;
+  border-radius: 40px;
+  padding: 10px 25px;
+  background: transparent;
+  outline: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  border: 2px solid #bd51bd;
+  z-index: 1;
+  color: white;
+  font-size: 16px;
+}
+.edit-set-button:after {
+  position: absolute;
+  content: "";
+  border-radius: 40px;
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  direction: ltr;
+  z-index: -1;
+  background: #bd51bd;
+  transition: all 0.3s ease;
+}
+.edit-set-button:hover {
+  color: black;
+}
+.edit-set-button:hover:after {
   left: 0;
   right: 0;
   width: 100%;
