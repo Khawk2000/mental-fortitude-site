@@ -93,8 +93,8 @@ const CreateWorkout = () => {
                     <tr>
                         <th>Exercise Type</th>
                         <th>Exercise Name</th>
-                        <th>Rounds x Reps</th>
-                        <th>Weight</th>
+                        <th>Number of Sets</th>
+                        <th>Reps x Weight</th>
                         <th>Duration(min)</th>
                         <th>Distance(mi)</th>
                         <th>PR</th>
@@ -103,11 +103,24 @@ const CreateWorkout = () => {
                         <tr key={index}>
                             <td>{item.type}</td>
                             <td>{item.name}</td>
-                            {item.type === "Lift" && <td>{item.sets.rounds}x{item.sets.reps}</td>}
-                            {item.type === "Cardio" && <td></td>}
-                            <td>{item.sets.weight}</td>
-                            <td>{item.sets.duration}</td>
-                            <td>{item.sets.distance}</td>
+                            {item.type === "Lift" && <td>{item.sets.length}</td>}
+                            {item.type === "Lift" && 
+                                <td>
+                                    {item.sets.map(function(subsets, id){
+                                        if(item.sets[id] === undefined){
+                                            return console.log()
+                                        }else{
+                                            return <div>{item.sets[id].rep}x{item.sets[id].weight}</div>
+                                        }
+                                    })}
+                                </td>}
+                            {item.type === "Cardio" && <td>-</td>}
+                            {item.type === "Cardio" && <td>-</td>}
+                            {item.type === "Lift" && <td>-</td>}
+                            {item.type === "Lift" && <td>-</td>}
+                            
+                            {item.type === "Cardio" && <td>{item.duration}</td>}
+                            {item.type === "Cardio" && <td>{item.distance}</td>}
                             <td>🍔</td>
                         </tr>
                     ))}

@@ -32,13 +32,15 @@ const ExerciseForm = ({ exercises, title }) => {
             const nextSets = sets.map((d, i) => {
                 if(i === num){
                     return data
-                }else{
+                } else{
                     return d
                 }
             })
             setSets(nextSets)
         } else {
+            usedNums.push(num)
             setSets([...sets, data])
+            console.log(sets)
         }
         
         
@@ -60,15 +62,15 @@ const ExerciseForm = ({ exercises, title }) => {
             console.log(sets)
             //console.log(sets)
             let data = { type, name, duration, distance, sets }
-            console.log(data)
             exercises(data)
-
+            setSets([])
             setType('')
             setName('')
             setRounds('')
             setDuration('')
             setDistance('')
-
+            var selectBox = document.getElementById('exercise-type');
+            selectBox.selectedIndex = 0
             alert("Exercise added to workout, add more if you need")
         }   
     }

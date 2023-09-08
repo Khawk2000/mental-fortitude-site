@@ -26,7 +26,7 @@ const SetsForm = ({ getSets, num }) => {
         <div className="sets-form">
             <form className="create-sets">
                 <div className="sets-col-1">
-                    <p>Set {num}: </p>
+                    <p>Set {num+1}: </p>
                 </div>
                 <div className="sets-col-2">
                     <label>Reps for exercise: </label>

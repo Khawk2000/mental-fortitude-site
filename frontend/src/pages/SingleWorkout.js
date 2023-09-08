@@ -47,8 +47,8 @@ const SingleWorkout = () => {
                 {isPending && <h1>Loading...</h1>}
                 {workout && <WorkoutDetails workout={workout}/>}
                 {workout && <div className="center-button">
-                    <button className='home-button' onClick={handleHome}>Home <FontAwesomeIcon icon={faHouse} /></button>
-                    <button className="delete-workout" onClick={handleDelete}>Delete <FontAwesomeIcon icon={faTrash}/></button>
+                    <button className='home-button' onClick={handleHome}><FontAwesomeIcon icon={faHouse} /><span className='text-from-icon'>Home</span></button>
+                    <button className="delete-workout" onClick={handleDelete}><FontAwesomeIcon icon={faTrash}/><span className='text-from-icon'>Delete</span></button>
                     </div>}
             </div>
         </div>
