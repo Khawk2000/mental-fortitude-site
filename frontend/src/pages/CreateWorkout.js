@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 import ExerciseForm from '../components/ExerciseForm';
 
@@ -12,6 +13,7 @@ const CreateWorkout = () => {
     const [day, setDay] = useState('')
     const [titleconfirmed, setTitleConfirmed] = useState(false)
     const [listExercises, setListExercises] = useState([])
+    const {user} = useAuthContext()
 
     useEffect(() => {
         if (exercise){
@@ -48,13 +50,19 @@ const CreateWorkout = () => {
     }
 
     const postWorkout = async () => {
+        if(!user){
+            setError('You must be logged in')
+            console.log(error)
+            return
+        }
         const workout = {day, title, exercise: listExercises}
         console.log(workout)
         const response = await fetch('api/workouts/createworkout/', {
             method: 'POST',
             body: JSON.stringify(workout),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json()

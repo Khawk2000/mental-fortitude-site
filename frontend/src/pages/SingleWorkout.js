@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { useAuthContext } from '../hooks/useAuthContext';
 
 
 //components
@@ -13,10 +14,15 @@ const SingleWorkout = () => {
     const { id } = useParams()
     const [isPending, setIsPending] = useState(true)
     const [workout, setWorkout] = useState(null)
+    const {user} = useAuthContext()
 
     useEffect(() => {
         const fetchWorkout = async () => {
-            const response = await fetch('/api/workouts/' + id)
+            const response = await fetch('/api/workouts/' + id, {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
             const json = await response.json()
             if (response.ok) {
                 setWorkout(json)
@@ -24,11 +30,17 @@ const SingleWorkout = () => {
             }
         }
         fetchWorkout()
-    }, [id])
+    }, [id, user])
 
     const handleDelete = async () =>{
+        if(!user){
+            return
+        }
             const response = await fetch('api/workouts/' + id, {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
             })
             const json = await response.json()
     
