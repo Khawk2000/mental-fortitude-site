@@ -22,9 +22,10 @@ header .container {
   margin: 0 auto;
   padding: 10px 40px;
   display: flex;
+  flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   text-decoration: none;
 }
 .container h1 {
@@ -608,7 +609,7 @@ nav button {
 }
 nav button {
   width: 100%;
-  max-width: 200px;
+  max-width: 150px;
   border-radius: 40px;
   padding: 10px 25px;
   background: transparent;
@@ -658,10 +659,13 @@ form.signup, form.login {
 .signup h3, .login h3 {
   color: var(--fifth);
   font-size: 30px;
+  text-decoration: underline;
 }
 
 .signup label, .login label {
   color: var(--fifth);
+  padding-bottom: 5px;
+  font-size: 18px;
 }
 
 .login input {
@@ -670,7 +674,8 @@ form.signup, form.login {
   background-color: var(--secondary);
   color: var(--fifth);
   height: 25px;
-  width: 250px;
+  width: 350px;
+  border-radius: 5px;
 }
 
 .signup input {
@@ -679,7 +684,8 @@ form.signup, form.login {
     background-color: var(--secondary);
     color: var(--fifth);
     height: 25px;
-    width: 250px;
+    width: 350px;
+    border-radius: 5px;
     outline: none;
 }
 
@@ -775,4 +781,28 @@ div.error {
 
 .user-login-display {
   color: var(--primary);
+}
+
+.left-side-nav {
+  display: flex;
+} 
+
+.app-name {
+  padding-top: 20px;
+}
+
+.rsnav-item{
+  padding-left: 20px;
+  font-size: 26px;
+}
+
+.right-side-nav {
+  display: flex;
+}
+
+.user-login-display {
+  width: 300px;
+  padding-top: 25px;
+  padding-right: 20px;
+  font-size: 18px;
 }

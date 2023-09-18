@@ -19,18 +19,22 @@ const Navbar = () => {
     return (
         <header>
             <div className="container">
-                <Link to='/'>
-                    <img src={logo} className='App-Logo' alt="MF Logo"/>
-                </Link>
-                <h1>Workout Buddy</h1>
+                <div className='left-side-nav'>
+                    <Link to='/'>
+                        <img src={logo} className='App-Logo' alt="MF Logo"/>
+                    </Link>
+                    <div className='app-name'>
+                        <h1>Workout Buddy</h1>
+                    </div>
+                </div>
                 <nav>
-                    {user && (<div>
+                    {user && (<div className='right-side-nav'>
                         <span className='user-login-display'>Welcome Back, {user.email}!</span>
                         <button onClick={handleClick}>Log out</button>
                     </div>)}
-                    {!user && (<div>
-                        <Link to='/login'>Login</Link>
-                        <Link to='/signup'>Sign up</Link>
+                    {!user && (<div className='right-side-nav'>
+                        <Link to='/login' className='rsnav-item'>Login</Link>
+                        <Link to='/signup' className='rsnav-item'>Signup</Link>
                     </div>)}
                 </nav>
                 

@@ -16,23 +16,23 @@ const Signup = () => {
 
     return (
         <form className="signup" onSubmit={handleSubmit}>
-            <h3>Sign up</h3>
+            <h3>Signup</h3>
 
-            <label>Email</label>
+            <label>Email:</label>
             <input 
                 type='email'
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
             />
 
-            <label>Password</label>
+            <label>Password:</label>
             <input 
                 type='password'
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
             />
 
-            <button className="signup-button" disabled={isLoading}>Sign up</button>
+            <button className="signup-button" disabled={isLoading}>Signup</button>
             {error && <div className="error">{error}</div>}
         </form>
     )
