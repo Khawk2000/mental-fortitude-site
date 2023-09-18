@@ -3,16 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
 const setsSchema = new Schema({
-    rounds: {
-        type:Number
-    },
-    duration: {
-        type:Number
-    },
-    distance: {
-        type:Number
-    },
-    reps:{
+    rep:{
         type:Number
     },
     weight: {
@@ -30,13 +21,23 @@ const exerciseSchema = new Schema({
         type: String,
         required: true
     },
-    sets: { 
+    duration: {
+        type:Number
+    },
+    distance: {
+        type:Number
+    },
+    sets: [{ 
         type: setsSchema,
         required: true
-    }
+    }]
 })
 
 const workoutSchema = new Schema({
+    user_id: {
+        type: String,
+        required: true
+    },
     day: {
         type: String,
         unique: true

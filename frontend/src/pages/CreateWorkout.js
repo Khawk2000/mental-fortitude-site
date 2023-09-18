@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 import ExerciseForm from '../components/ExerciseForm';
 
@@ -12,6 +13,7 @@ const CreateWorkout = () => {
     const [day, setDay] = useState('')
     const [titleconfirmed, setTitleConfirmed] = useState(false)
     const [listExercises, setListExercises] = useState([])
+    const {user} = useAuthContext()
 
     useEffect(() => {
         if (exercise){
@@ -48,13 +50,19 @@ const CreateWorkout = () => {
     }
 
     const postWorkout = async () => {
+        if(!user){
+            setError('You must be logged in')
+            console.log(error)
+            return
+        }
         const workout = {day, title, exercise: listExercises}
         console.log(workout)
         const response = await fetch('api/workouts/createworkout/', {
             method: 'POST',
             body: JSON.stringify(workout),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json()
@@ -93,8 +101,8 @@ const CreateWorkout = () => {
                     <tr>
                         <th>Exercise Type</th>
                         <th>Exercise Name</th>
-                        <th>Rounds x Reps</th>
-                        <th>Weight</th>
+                        <th>Number of Sets</th>
+                        <th>Reps x Weight</th>
                         <th>Duration(min)</th>
                         <th>Distance(mi)</th>
                         <th>PR</th>
@@ -103,11 +111,24 @@ const CreateWorkout = () => {
                         <tr key={index}>
                             <td>{item.type}</td>
                             <td>{item.name}</td>
-                            {item.type === "Lift" && <td>{item.sets.rounds}x{item.sets.reps}</td>}
-                            {item.type === "Cardio" && <td></td>}
-                            <td>{item.sets.weight}</td>
-                            <td>{item.sets.duration}</td>
-                            <td>{item.sets.distance}</td>
+                            {item.type === "Lift" && <td>{item.sets.length}</td>}
+                            {item.type === "Lift" && 
+                                <td>
+                                    {item.sets.map(function(subsets, id){
+                                        if(item.sets[id] === undefined){
+                                            return console.log()
+                                        }else{
+                                            return <div>{item.sets[id].rep}x{item.sets[id].weight}</div>
+                                        }
+                                    })}
+                                </td>}
+                            {item.type === "Cardio" && <td>-</td>}
+                            {item.type === "Cardio" && <td>-</td>}
+                            {item.type === "Lift" && <td>-</td>}
+                            {item.type === "Lift" && <td>-</td>}
+                            
+                            {item.type === "Cardio" && <td>{item.duration}</td>}
+                            {item.type === "Cardio" && <td>{item.distance}</td>}
                             <td>🍔</td>
                         </tr>
                     ))}

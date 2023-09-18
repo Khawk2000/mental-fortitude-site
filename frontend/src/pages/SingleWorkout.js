@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { useAuthContext } from '../hooks/useAuthContext';
 
 
 //components
@@ -13,10 +14,15 @@ const SingleWorkout = () => {
     const { id } = useParams()
     const [isPending, setIsPending] = useState(true)
     const [workout, setWorkout] = useState(null)
+    const {user} = useAuthContext()
 
     useEffect(() => {
         const fetchWorkout = async () => {
-            const response = await fetch('/api/workouts/' + id)
+            const response = await fetch('/api/workouts/' + id, {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
             const json = await response.json()
             if (response.ok) {
                 setWorkout(json)
@@ -24,11 +30,17 @@ const SingleWorkout = () => {
             }
         }
         fetchWorkout()
-    }, [id])
+    }, [id, user])
 
     const handleDelete = async () =>{
+        if(!user){
+            return
+        }
             const response = await fetch('api/workouts/' + id, {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
             })
             const json = await response.json()
     
@@ -47,8 +59,8 @@ const SingleWorkout = () => {
                 {isPending && <h1>Loading...</h1>}
                 {workout && <WorkoutDetails workout={workout}/>}
                 {workout && <div className="center-button">
-                    <button className='home-button' onClick={handleHome}>Home <FontAwesomeIcon icon={faHouse} /></button>
-                    <button className="delete-workout" onClick={handleDelete}>Delete <FontAwesomeIcon icon={faTrash}/></button>
+                    <button className='home-button' onClick={handleHome}><FontAwesomeIcon icon={faHouse} /><span className='text-from-icon'>Home</span></button>
+                    <button className="delete-workout" onClick={handleDelete}><FontAwesomeIcon icon={faTrash}/><span className='text-from-icon'>Delete</span></button>
                     </div>}
             </div>
         </div>
