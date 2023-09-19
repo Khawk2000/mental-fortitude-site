@@ -1,5 +1,5 @@
 
-//Need to make separate page for workout details similar to blogs 
+//simple component with day and title of workout for home page
 const WorkoutPreview = ({ workout }) => {
     const {day, title} = workout;
     return(

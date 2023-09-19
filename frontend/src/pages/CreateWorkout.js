@@ -15,6 +15,7 @@ const CreateWorkout = () => {
     const [listExercises, setListExercises] = useState([])
     const {user} = useAuthContext()
 
+    //keeps track of exercises in entire workout and updates the table on createworkouts accordingly
     useEffect(() => {
         if (exercise){
             setListExercises([...listExercises, exercise])
@@ -23,6 +24,7 @@ const CreateWorkout = () => {
         console.log(listExercises)
     }, [exercise, titleconfirmed, listExercises])
 
+    //Confirming title and day and time for the new workout
     const ConfirmTitle = () => {
         setTitleConfirmed(true)
         var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
@@ -49,6 +51,7 @@ const CreateWorkout = () => {
         setDay(datetime)
     }
 
+    //Sent workout to database
     const postWorkout = async () => {
         if(!user){
             setError('You must be logged in')
@@ -79,6 +82,7 @@ const CreateWorkout = () => {
 
     }
 
+    //function to get exercises from ExerciseForm
     const exercises = (data) => {
         setExercise(data)
     }

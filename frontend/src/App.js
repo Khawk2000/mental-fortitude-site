@@ -8,7 +8,7 @@ import CreateWorkout from './pages/CreateWorkout';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
-
+//added conditional loading if user is signed in or not
 function App() {
   const {user} = useAuthContext()
 

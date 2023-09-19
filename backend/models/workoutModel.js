@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema
 
+//Sets schema inside of exercises
 const setsSchema = new Schema({
     rep:{
         type:Number
@@ -10,7 +11,7 @@ const setsSchema = new Schema({
         type:Number 
     }
 })
-
+// exercises schema inside of workout
 const exerciseSchema = new Schema({
     type: {
         type: String,
@@ -33,6 +34,7 @@ const exerciseSchema = new Schema({
     }]
 })
 
+//Workout schema
 const workoutSchema = new Schema({
     user_id: {
         type: String,

@@ -1,9 +1,8 @@
 import { useState } from "react";
 
 import SetsForm from '../components/SetsForm';
-// NEED TO ADD CHECKMARK BUTTON SO EACH TIME THE USER ADDS VALUES TO THE REPS AND WEIGHT FOR A SET IT WONT MESS UP 
-// OTHER SETS
 
+//Array used for keeping track of sets ids
 var usedNums = []
 
 const ExerciseForm = ({ exercises, title }) => {
@@ -15,9 +14,10 @@ const ExerciseForm = ({ exercises, title }) => {
     const [sets, setSets] = useState([])
 
 
-
+    //keeps track of number of sets needed to generate based on number in rounds field
     var numSets = []
 
+    //function to get data from SetsForm with id(num)
     const getSets = (data, num) => {
         if(usedNums.includes(num)){
             const nextSets = sets.map((d, i) => {
@@ -34,17 +34,10 @@ const ExerciseForm = ({ exercises, title }) => {
             console.log(sets)
         }
         
-        
-        /*if(usedNums.includes(num)){
-            sets.splice(num, 1, data)
-        }else{
-            usedNums.push(num)
-            sets.splice(num, 0, data)
-        }
-        console.log(sets)
-        */
     }
 
+    //handle click of add exercise button
+    //instead of alert have an alert message that looks better and is bigger
     const handleClick = (e) => {
         e.preventDefault()
         if (type === '' || name === '') {
@@ -66,6 +59,7 @@ const ExerciseForm = ({ exercises, title }) => {
         }   
     }
 
+    //creates the correct number of SetsForms and passes the getSets function to children
     const sendSets = (rounds) => {
         for(let i=0; i<rounds; i++){
             numSets.push(<SetsForm getSets={getSets} num={i}/>)
@@ -73,7 +67,6 @@ const ExerciseForm = ({ exercises, title }) => {
         return numSets
     }
 
-    //Maybe when exercise is added, display it in a table below for reference similar to the one in SingleWorkout.js
 
     return (
         <div className="exercise-form">

@@ -11,6 +11,7 @@ const Navbar = () => {
     const { user } = useAuthContext()
     const navigate = useNavigate()
 
+    //handles logout button click
     const handleClick = () => {
         logout()
         navigate('/login')
@@ -30,7 +31,7 @@ const Navbar = () => {
                 <nav>
                     {user && (<div className='right-side-nav'>
                         <span className='user-login-display'>Welcome Back, {user.email}!</span>
-                        <button onClick={handleClick}>Log out</button>
+                        <button onClick={handleClick}>Logout</button>
                     </div>)}
                     {!user && (<div className='right-side-nav'>
                         <Link to='/login' className='rsnav-item'>Login</Link>
