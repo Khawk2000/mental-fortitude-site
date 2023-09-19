@@ -4,7 +4,7 @@ import SetsForm from '../components/SetsForm';
 // NEED TO ADD CHECKMARK BUTTON SO EACH TIME THE USER ADDS VALUES TO THE REPS AND WEIGHT FOR A SET IT WONT MESS UP 
 // OTHER SETS
 
-//var sets = []
+var usedNums = []
 
 const ExerciseForm = ({ exercises, title }) => {
     const [type, setType] = useState('');
@@ -13,19 +13,10 @@ const ExerciseForm = ({ exercises, title }) => {
     const [duration, setDuration] = useState('')
     const [distance, setDistance] = useState('')
     const [sets, setSets] = useState([])
-    var usedNums = []
 
 
-    //const [listSets, setListSets] = useState([])
+
     var numSets = []
-
-   /* useEffect(() => {
-        if(sets){
-            setListSets([...listSets, sets])
-            setSets(null)
-        }
-        
-    }, [sets, listSets])*/
 
     const getSets = (data, num) => {
         if(usedNums.includes(num)){
