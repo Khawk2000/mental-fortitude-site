@@ -9,7 +9,9 @@ const SetsForm = ({ getSets, num }) => {
     const [enabled, setEnabled] = useState(true)
     
 
+
     //Handles click of addset button
+
     const handleClick = (e) => {
         e.preventDefault()
         let data = { rep, weight }
