@@ -8,13 +8,17 @@ const SetsForm = ({ getSets, num }) => {
     const [weight, setWeight] = useState('')
     const [enabled, setEnabled] = useState(true)
     
+
+
+    //Handles click of addset button
+
     const handleClick = (e) => {
         e.preventDefault()
         let data = { rep, weight }
         setEnabled(false)
         getSets(data, num)
     }
-    
+    //handle click of edit set button
     const handleEdit = (e) => {
         e.preventDefault()
         setEnabled(true)

@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useLogin } from '../hooks/useLogin'
 
+//Login page
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')

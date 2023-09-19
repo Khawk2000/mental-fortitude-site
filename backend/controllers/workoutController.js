@@ -72,6 +72,7 @@ const deleteWorkout = async (req, res) => {
 }
 
 // update workout
+// Not implemented yet but need to work things out
 const updateWorkout = async (req, res) => {
     const { id } = req.params
 

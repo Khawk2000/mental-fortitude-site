@@ -9,6 +9,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 //components
 import WorkoutDetails from '../components/WorkoutDetails'
 
+//Displaying single workout page
 const SingleWorkout = () => {
     const navigate = useNavigate()
     const { id } = useParams()
