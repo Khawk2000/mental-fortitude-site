@@ -8,8 +8,6 @@ const SetsForm = ({ getSets, num }) => {
     const [weight, setWeight] = useState('')
     const [enabled, setEnabled] = useState(true)
     
-
-    
     const handleClick = (e) => {
         e.preventDefault()
         let data = { rep, weight }
