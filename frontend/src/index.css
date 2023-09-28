@@ -117,7 +117,7 @@ header a{
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-.details-container {
+.details-container, .edit-container {
   background: var(--fourth);
   color: var(--primary);
   border-radius: 4px;

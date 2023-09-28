@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import CreateWorkout from './pages/CreateWorkout';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import EditWorkout from './pages/EditWorkout'
 
 //added conditional loading if user is signed in or not
 function App() {
@@ -33,6 +34,10 @@ function App() {
             <Route 
               path='/:id'
               element={<SingleWorkout/>}
+            />
+            <Route
+              path='/edit/:id'
+              element={<EditWorkout/>}
             />
             <Route 
               path='/'

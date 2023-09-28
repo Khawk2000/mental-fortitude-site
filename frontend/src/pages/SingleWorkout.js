@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faHouse, faTrash, faPencil } from '@fortawesome/free-solid-svg-icons'
 import { useAuthContext } from '../hooks/useAuthContext';
 
 
@@ -51,6 +51,11 @@ const SingleWorkout = () => {
             }
 
     }
+
+    const handleEdit = () => {
+        navigate(`/edit/${id}`)
+    }
+
     const handleHome = () =>{
         navigate('/')
     }
@@ -58,10 +63,13 @@ const SingleWorkout = () => {
         <div className="single-workout">
             <div className="details-container">
                 {isPending && <h1>Loading...</h1>}
-                {workout && <WorkoutDetails workout={workout}/>}
+                {workout && <div>
+                    <WorkoutDetails workout={workout}/>
+                    </div>}
                 {workout && <div className="center-button">
                     <button className='home-button' onClick={handleHome}><FontAwesomeIcon icon={faHouse} /><span className='text-from-icon'>Home</span></button>
                     <button className="delete-workout" onClick={handleDelete}><FontAwesomeIcon icon={faTrash}/><span className='text-from-icon'>Delete</span></button>
+                    <button className='edit-workout' onClick={handleEdit}><FontAwesomeIcon icon={faPencil}/><span className='text-from-icon'>Edit</span></button>
                     </div>}
             </div>
         </div>

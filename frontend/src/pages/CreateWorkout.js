@@ -21,7 +21,6 @@ const CreateWorkout = () => {
             setListExercises([...listExercises, exercise])
             setExercise(null)
         }
-        console.log(listExercises)
     }, [exercise, titleconfirmed, listExercises])
 
     //Confirming title and day and time for the new workout
@@ -59,7 +58,6 @@ const CreateWorkout = () => {
             return
         }
         const workout = {day, title, exercise: listExercises}
-        console.log(workout)
         const response = await fetch('api/workouts/createworkout/', {
             method: 'POST',
             body: JSON.stringify(workout),
@@ -120,7 +118,7 @@ const CreateWorkout = () => {
                                 <td>
                                     {item.sets.map(function(subsets, id){
                                         if(item.sets[id] === undefined){
-                                            return console.log()
+                                            return console.log('hi')
                                         }else{
                                             return <div>{item.sets[id].rep}x{item.sets[id].weight}</div>
                                         }
