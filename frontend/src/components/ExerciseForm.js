@@ -18,6 +18,9 @@ const ExerciseForm = ({ exercises, title }) => {
     var numSets = []
 
     //function to get data from SetsForm with id(num)
+    
+    var numSets = []
+
     const getSets = (data, num) => {
         if(usedNums.includes(num)){
             const nextSets = sets.map((d, i) => {
@@ -33,7 +36,7 @@ const ExerciseForm = ({ exercises, title }) => {
             setSets([...sets, data])
             console.log(sets)
         }
-        
+
     }
 
     //handle click of add exercise button
