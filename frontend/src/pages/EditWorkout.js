@@ -3,16 +3,18 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faPencil} from '@fortawesome/free-solid-svg-icons'
+import { faHouse, faCheck} from '@fortawesome/free-solid-svg-icons'
 import EditSets from '../components/EditSets';
 
 var editedExercises = []
+
+//FIX!!! ISSUES WITH EDITING EXERCISES WITH MORE THAN ONE SET, DELETES ALL OTHER SETS BUT LAST ONE
 
 const EditWorkout = () => {
     const [workout, setWorkout] = useState(null)
     const { id } = useParams()
     const {user} = useAuthContext()
-    const [title, setTitle] = useState()
+    const [title, setTitle] = useState(null)
     const [sets, setSets] = useState([])
     const [editDT, setEditDT] = useState(true)
     const [editDur, setEditDur] = useState(null)
@@ -78,6 +80,9 @@ const EditWorkout = () => {
     const confirmTitle = () => {
         setEditDT(false)
         setEditExercise(true)
+        if(title === null){
+            setTitle(workout.title)
+        }
     }
 
 
@@ -112,20 +117,21 @@ const EditWorkout = () => {
     return (
         <div className='edit-workout'>
             <div className='edit-container'>
-                <h1>Testing Phase</h1>
                 {workout && 
                     <div>
                         {editDT && 
                         <div className='edit-title-container'>
                             <div className='label-input-container'>
-                                <h3>Current Workout Title: {workout.title}</h3>
-                                <label className='title-label'>New Title</label>
-                                <input className='title-input'type='text' onChange={(e) => setTitle(e.target.value)} value={title}/>
-                                <button onClick={confirmTitle}>Confirm Title</button>
+                                <h2>Current Workout Title: {workout.title}</h2>
+                                <label className='title-label'>New Title: </label>
+                                <div className='new-title-line'>
+                                    <input className='title-input' type='text' onChange={(e) => setTitle(e.target.value)} value={title}/>
+                                    <button onClick={confirmTitle} className='confirm-title-button'>Confirm Title</button>
+                                </div>
                             </div>
                         </div>
                         }
-                        {!editDT && <h3>New Workout Title: {title}</h3>}
+                        {!editDT && <h1>New Workout Title: {title}</h1>}
                         {editExercise && 
                             <div className='edit-sets-container'>
                                 <h3>Edit Exercise #{index+1}</h3>
@@ -152,14 +158,22 @@ const EditWorkout = () => {
                                         />
                                     </div>
                                 }
-                                <button onClick={changeIndex}>Confirm Edits to Exercise #{index+1}</button>
-                            </div>
+                                <div className='confirm-edits-button-wrap'>
+                                    <button className='confirm-edits-button'onClick={changeIndex}><FontAwesomeIcon icon={faCheck}/><span className='text-from-icon'>Confirm Edits to Exercise #{index+1}</span></button>
+                                </div>
+                           </div>
                         }
-                        {doneEdits && <h3>Done with all edits</h3>}
+                        
                     </div>
-            }
-                <button className='home-button' onClick={handleHome}><FontAwesomeIcon icon={faHouse} /><span className='text-from-icon'>Home</span></button>
-                <button className='submit-edit' onClick={handleEdit}><FontAwesomeIcon icon={faPencil}/><span className='text-from-icon'>Submit Edits</span></button>
+            }   
+                <div className='done-edits-wrap'>
+                    {doneEdits && <h2>Done with all edits</h2>}
+                    {doneEdits && <button className='submit-edit' onClick={handleEdit}><FontAwesomeIcon icon={faCheck}/><span className='text-from-icon'>Submit Edits</span></button>}
+                </div>
+                <div className='home-button-wrap'>
+                    <button className='home-button' onClick={handleHome}><FontAwesomeIcon icon={faHouse} /><span className='text-from-icon'>Home</span></button>
+                </div>
+                
             </div>
         </div>
 

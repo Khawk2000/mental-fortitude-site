@@ -68,8 +68,8 @@ const SingleWorkout = () => {
                     </div>}
                 {workout && <div className="center-button">
                     <button className='home-button' onClick={handleHome}><FontAwesomeIcon icon={faHouse} /><span className='text-from-icon'>Home</span></button>
+                    <button className='edit-workout-button' onClick={handleEdit}><FontAwesomeIcon icon={faPencil}/><span className='text-from-icon'>Edit</span></button>
                     <button className="delete-workout" onClick={handleDelete}><FontAwesomeIcon icon={faTrash}/><span className='text-from-icon'>Delete</span></button>
-                    <button className='edit-workout' onClick={handleEdit}><FontAwesomeIcon icon={faPencil}/><span className='text-from-icon'>Edit</span></button>
                     </div>}
             </div>
         </div>

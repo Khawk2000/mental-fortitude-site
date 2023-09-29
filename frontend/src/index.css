@@ -9,6 +9,7 @@
   --fourth: #323b48;
   --fifth: #b2c9ab;
   --error: crimson;
+  --edit: #59d371;
 }
 body {
   background: var(--tirceary);
@@ -186,7 +187,7 @@ header a{
 
 .home-button {
   border-radius: 40px;
-  padding: 10px 25px;
+  padding: 15px 40px;
   margin-right: 10px;
   background: transparent;
   outline: none !important;
@@ -197,7 +198,7 @@ header a{
   border: 2px solid var(--primary);
   z-index: 1;
   color: white;
-  font-size: 16px;
+  font-size: 20px;
 }
 .home-button:after {
   position: absolute;
@@ -223,7 +224,7 @@ header a{
 
 .delete-workout {
   border-radius: 40px;
-  padding: 10px 25px;
+  padding: 15px 40px;
   margin-left: 10px;
   background: transparent;
   outline: none !important;
@@ -234,7 +235,7 @@ header a{
   border: 2px solid rgb(220, 23, 23);
   z-index: 1;
   color: white;
-  font-size: 16px;
+  font-size: 20px;
 }
 .delete-workout:after {
   position: absolute;
@@ -354,7 +355,7 @@ header a{
   align-items: center;
   width: 100%;
 }
-.eform-table input {
+.eform-table input, .sets-form input {
   margin-bottom: 20px;
   font-size: 20px;
   background-color: var(--secondary);
@@ -362,7 +363,7 @@ header a{
   height: 25px;
   width: 250px;
 }
-.eform-table select {
+.eform-table select, .sets-form select {
   background-color: var(--secondary);
   color: var(--fifth);
   outline: none;
@@ -371,7 +372,7 @@ header a{
   margin-bottom: 20px;
   width: 250px;
 }
-.eform-table input:focus {
+.eform-table input:focus, .sets-form input:focus {
   outline: none !important;
   border-color: var(--fifth);
 }
@@ -475,7 +476,7 @@ header a{
 
 /* Sets Form styling */
 .sets-form {
-  width: 1000px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -521,7 +522,7 @@ header a{
   transition: all 0.3s ease;
   position: relative;
   display: inline-block;
-  border: 2px solid #68B35B;
+  border: 2px solid var(--edit);
   z-index: 1;
   color: white;
   font-size: 16px;
@@ -536,7 +537,7 @@ header a{
   right: 0;
   direction: ltr;
   z-index: -1;
-  background: #68B35B;
+  background: var(--edit);
   transition: all 0.3s ease;
 }
 .add-set-button:hover {
@@ -805,4 +806,217 @@ div.error {
   padding-top: 25px;
   padding-right: 20px;
   font-size: 18px;
+}
+
+.edit-workout-button {
+  border-radius: 40px;
+  padding: 15px 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background: transparent;
+  outline: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  border: 2px solid var(--edit);
+  z-index: 1;
+  color: white;
+  font-size: 20px;
+}
+.edit-workout-button:after {
+  position: absolute;
+  content: "";
+  border-radius: 40px;
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  direction: ltr;
+  z-index: -1;
+  background: var(--edit);
+  transition: all 0.3s ease;
+}
+.edit-workout-button:hover {
+  color: black;
+}
+.edit-workout-button:hover:after {
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.label-input-container{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+}
+
+.home-button-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.label-input-container .title-label {
+  padding-bottom: 10px;
+}
+
+.label-input-container .title-input {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.confirm-title-button {
+  max-width: 150px;
+  border-radius: 40px;
+  padding: 10px 25px;
+  margin-left: 50px;
+  margin-right: 10px;
+  background: transparent;
+  outline: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  border: 2px solid var(--edit);
+  z-index: 1;
+  color: white;
+  font-size: 16px;
+}
+.confirm-title-button:after {
+  position: absolute;
+  content: "";
+  border-radius: 40px;
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  direction: ltr;
+  z-index: -1;
+  background: var(--edit);
+  transition: all 0.3s ease;
+}
+.confirm-title-button:hover {
+  color: black;
+}
+.confirm-title-button:hover:after {
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.new-title-line {
+  display: inline;
+}
+
+.confirm-edits-button {
+  max-width: 100%;
+  border-radius: 40px;
+  padding: 10px 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background: transparent;
+  outline: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  border: 2px solid var(--edit);
+  z-index: 1;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+}
+.confirm-edits-button:after {
+  position: absolute;
+  content: "";
+  border-radius: 40px;
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  direction: ltr;
+  z-index: -1;
+  background: var(--edit);
+  transition: all 0.3s ease;
+}
+.confirm-edits-button:hover {
+  color: black;
+}
+.confirm-edits-button:hover:after {
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.confirm-edits-button-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.done-edits-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-container h2, h1 {
+  color: var(--fifth);
+}
+.done-edits-wrap h2 {
+  padding: 12px 25px;
+  margin-right: 10px;
+}
+
+.submit-edit {
+  border-radius: 40px;
+  padding: 12px 25px;
+  margin-right: 10px;
+  background: transparent;
+  outline: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  border: 2px solid var(--edit);
+  z-index: 1;
+  color: white;
+  font-size: 16px;
+}
+.submit-edit:after {
+  position: absolute;
+  content: "";
+  border-radius: 40px;
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  direction: ltr;
+  z-index: -1;
+  background: var(--edit);
+  transition: all 0.3s ease;
+}
+.submit-edit:hover {
+  color: black;
+}
+.submit-edit:hover:after {
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.sets-form input {
+  width: 150px;
+}
+
+.sets-form select {
+  width: 150px;
 }
