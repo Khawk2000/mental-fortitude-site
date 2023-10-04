@@ -3,7 +3,7 @@ import { useState } from "react";
 import SetsForm from '../components/SetsForm';
 
 //Array used for keeping track of sets ids
-var usedNums = []
+
 
 const ExerciseForm = ({ exercises, title }) => {
     const [type, setType] = useState('');
@@ -17,10 +17,12 @@ const ExerciseForm = ({ exercises, title }) => {
     //keeps track of number of sets needed to generate based on number in rounds field
     var numSets = []
 
+    var usedNums = []
     //function to get data from SetsForm with id(num)
 
     const getSets = (data, num) => {
         if(usedNums.includes(num)){
+            console.log('is in nums')
             const nextSets = sets.map((d, i) => {
                 if(i === num){
                     return data
@@ -30,7 +32,9 @@ const ExerciseForm = ({ exercises, title }) => {
             })
             setSets(nextSets)
         } else {
+            console.log('not in nums')
             usedNums.push(num)
+            console.log(data)
             setSets([...sets, data])
             console.log(sets)
         }
@@ -45,7 +49,6 @@ const ExerciseForm = ({ exercises, title }) => {
             alert('Type and Name are both required fields for each exercise')
         } else {
             console.log(sets)
-            //console.log(sets)
             let data = { type, name, duration, distance, sets }
             exercises(data)
             setSets([])

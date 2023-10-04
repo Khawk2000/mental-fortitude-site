@@ -21,7 +21,8 @@ const CreateWorkout = () => {
             setListExercises([...listExercises, exercise])
             setExercise(null)
         }
-    }, [exercise, titleconfirmed, listExercises])
+        console.log(listExercises)
+    }, [exercise, listExercises])
 
     //Confirming title and day and time for the new workout
     const ConfirmTitle = () => {

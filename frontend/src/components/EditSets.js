@@ -1,26 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faPlus} from '@fortawesome/free-solid-svg-icons';
 
 const EditSets = ({ getEditSets, currSets, num }) => {
     
-    const [rep, setRep] = useState('')
-    const [weight, setWeight] = useState('')
+    const [rep, setRep] = useState(currSets[num].rep)
+    const [weight, setWeight] = useState(currSets[num].weight)
     const [enabled, setEnabled] = useState(true)
-    const [repChange, setRepChange] = useState(false)
-    const [weightChange, setWeightChange] = useState(false)
 
+    useEffect(() => {
+        console.log(currSets)
+        setEnabled(true)
+        setRep(currSets[num].rep)
+        setWeight(currSets[num].weight)
+    }, [currSets, num])
 
     //Handles click of addset button
     const handleClick = (e) => {
         e.preventDefault()
-        if(!repChange){
-            setRep(currSets[num].rep)
-        }
-        if(!weightChange){
-            setWeight(currSets[num].weight)
-        }
         let data = { rep, weight }
+        console.log('edit sets data', data)
         setEnabled(false)
         getEditSets(data, num)
     }
@@ -43,7 +42,6 @@ const EditSets = ({ getEditSets, currSets, num }) => {
                         type="number"
                         onChange={(e) => {
                             setRep(e.target.value)     
-                            setRepChange(true)
                         }}
                         value={rep}
                     />}
@@ -64,7 +62,6 @@ const EditSets = ({ getEditSets, currSets, num }) => {
                         type="number"
                         onChange={(e) => {
                             setWeight(e.target.value)
-                            setWeightChange(true)
                         }}
                         value={weight}
                     />}

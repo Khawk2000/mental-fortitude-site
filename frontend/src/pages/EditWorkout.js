@@ -6,7 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse, faCheck} from '@fortawesome/free-solid-svg-icons'
 import EditSets from '../components/EditSets';
 
-var editedExercises = []
+
+
 
 //FIX!!! ISSUES WITH EDITING EXERCISES WITH MORE THAN ONE SET, DELETES ALL OTHER SETS BUT LAST ONE
 
@@ -25,9 +26,11 @@ const EditWorkout = () => {
     const [doneEdits, setDoneEdits] = useState(false)
     const navigate = useNavigate()
     const [index, setIndex] = useState(0)
+    const [editedExercises, setEditedExercises] = useState([])
 
-    
     var numSets = []
+    var usedNums = []
+
 
     useEffect(() => {
         const fetchWorkout = async () => {
@@ -45,13 +48,17 @@ const EditWorkout = () => {
             }
         }
         fetchWorkout()
-    }, [id, user])
+        console.log(editedExercises)
+    }, [id, user, editedExercises])
 
     const handleEdit = async () => {
         if(!user){
+            console.log('user issue')
             return
-        }
-        const editWorkout = {day:workout.day, title, exercise:editedExercises}
+        }else{
+        console.log(editedExercises)
+        const editWorkout = {day:workout.day, title:title, exercise:editedExercises}
+        console.log(editWorkout)
             const response = await fetch('/api/workouts/' + id, {
                 method: 'PATCH',
                 body: JSON.stringify(editWorkout),
@@ -70,6 +77,7 @@ const EditWorkout = () => {
                 console.log('Updated workout' + workout.title)
                 navigate('/')
             }
+        }
             
     }
 
@@ -86,8 +94,24 @@ const EditWorkout = () => {
     }
 
 
-    const getEditSets = (data) => {
-        setSets(data)
+    const getEditSets = (data, num) => {
+        if(usedNums.includes(num)){
+            console.log('is in nums')
+            const nextEdits = sets.map((d, i) => {
+                if(i === num){
+                    return data
+                }else{
+                    return d
+                }
+            })
+            setSets(nextEdits)
+        }else{
+            console.log('not in nums')
+            usedNums.push(num)
+            console.log(data)
+            setSets([...sets, data])
+
+        }
     }
 
     const sendEditSets = (num) => {
@@ -105,7 +129,8 @@ const EditWorkout = () => {
             setEditDis(workout.exercise[index].distance)
         }
         const editedExercise = {type:workout.exercise[index].type, name:workout.exercise[index].name, duration:editDur, distance:editDis, sets:sets}
-        editedExercises.push(editedExercise)
+        setEditedExercises([...editedExercises, editedExercise])
+        setSets([])
         if(index < workout.exercise.length-1){
             setIndex(index+1)
         }else {
@@ -134,7 +159,7 @@ const EditWorkout = () => {
                         {!editDT && <h1>New Workout Title: {title}</h1>}
                         {editExercise && 
                             <div className='edit-sets-container'>
-                                <h3>Edit Exercise #{index+1}</h3>
+                                <h3>Edit Exercise #{index+1}: {workout.exercise[index].name}</h3>
                                 {workout.exercise[index].type === "Lift" && sendEditSets(workout.exercise[index].sets.length)}
                                 {workout.exercise[index].type === "Cardio" && 
                                     <div>
