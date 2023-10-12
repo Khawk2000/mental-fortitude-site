@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse, faCheck} from '@fortawesome/free-solid-svg-icons'
 import EditSets from '../components/EditSets';
 
-
+var usedNums = []
 
 
 //FIX!!! ISSUES WITH EDITING EXERCISES WITH MORE THAN ONE SET, DELETES ALL OTHER SETS BUT LAST ONE
@@ -29,7 +29,7 @@ const EditWorkout = () => {
     const [editedExercises, setEditedExercises] = useState([])
 
     var numSets = []
-    var usedNums = []
+   
 
 
     useEffect(() => {
@@ -100,6 +100,8 @@ const EditWorkout = () => {
             const nextEdits = sets.map((d, i) => {
                 if(i === num){
                     return data
+                }else if(i < num){
+                    return console.log('tried to add more sets')
                 }else{
                     return d
                 }
@@ -108,6 +110,7 @@ const EditWorkout = () => {
         }else{
             console.log('not in nums')
             usedNums.push(num)
+            console.log(usedNums)
             console.log(data)
             setSets([...sets, data])
 
@@ -131,6 +134,7 @@ const EditWorkout = () => {
         const editedExercise = {type:workout.exercise[index].type, name:workout.exercise[index].name, duration:editDur, distance:editDis, sets:sets}
         setEditedExercises([...editedExercises, editedExercise])
         setSets([])
+        usedNums = []
         if(index < workout.exercise.length-1){
             setIndex(index+1)
         }else {

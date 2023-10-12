@@ -8,11 +8,16 @@ import CreateWorkout from './pages/CreateWorkout';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import EditWorkout from './pages/EditWorkout'
+import { useLogout } from './hooks/useLogout';
 
 //added conditional loading if user is signed in or not
 function App() {
   const {user} = useAuthContext()
-
+  const { logout } = useLogout()
+  window.addEventListener("beforeunload", (ev) => {
+    logout()
+  }
+  )
   return (
     <div className="App">
       <BrowserRouter>
