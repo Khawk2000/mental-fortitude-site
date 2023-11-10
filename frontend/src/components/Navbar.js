@@ -3,19 +3,41 @@ import logo from "C:/Users/keegm/Workspaces/mental-fortitude-site/frontend/src/M
 import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 
 
 const Navbar = () => {
     const { logout } = useLogout()
     const { user } = useAuthContext()
+    const [userInfo, setUserInfo] = useState()
     const navigate = useNavigate()
+    console.log(user)
 
     //handles logout button click
     const handleClick = () => {
         logout()
         navigate('/login')
     }
+    useEffect(() => {
+        const fetchUserInfo = async () => {
+            const response = await fetch('/api/user',  {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
+            const json = await response.json()
+        
+            if (response.ok) {
+                setUserInfo(json)
+            }
+        }
+        if (user){
+            fetchUserInfo()
+        }
+        
+    }, [user])
+    console.log(userInfo)
     
     return (
         <header>
@@ -30,7 +52,7 @@ const Navbar = () => {
                 </div>
                 <nav>
                     {user && (<div className='right-side-nav'>
-                        <span className='user-login-display'>Welcome Back, {user.email}!</span>
+                        <span className='user-login-display'>Welcome Back, {user.firstName}!</span>
                         <button onClick={handleClick}>Logout</button>
                     </div>)}
                     {!user && (<div className='right-side-nav'>

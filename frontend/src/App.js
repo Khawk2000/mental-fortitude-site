@@ -15,8 +15,8 @@ function App() {
   const {user} = useAuthContext()
   const { logout } = useLogout()
   window.addEventListener("beforeunload", (ev) => {
-    logout()
-  }
+      logout()
+    }
   )
   return (
     <div className="App">
