@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/view/mentalfortitude/home/app/static/css/main.83a7f99f.css",
+    "main.js": "/view/mentalfortitude/home/app/static/js/main.b23fa37a.js",
+    "static/media/MF_Logo.png": "/view/mentalfortitude/home/app/static/media/MF_Logo.ffb18d9fb4e769301725.png",
+    "index.html": "/view/mentalfortitude/home/app/index.html",
+    "main.83a7f99f.css.map": "/view/mentalfortitude/home/app/static/css/main.83a7f99f.css.map",
+    "main.b23fa37a.js.map": "/view/mentalfortitude/home/app/static/js/main.b23fa37a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.83a7f99f.css",
+    "static/js/main.b23fa37a.js"
+  ]
+}
