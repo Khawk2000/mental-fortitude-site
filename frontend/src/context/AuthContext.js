@@ -1,5 +1,8 @@
 import { createContext, useReducer, useEffect } from 'react'
 
+
+//Creating context that can be used to authenticate a user and store the login in local storage
+
 export const AuthContext = createContext()
 
 

@@ -5,6 +5,7 @@ import WorkoutPreview from '../components/WorkoutPreview'
 import { Link } from 'react-router-dom'
 import { useAuthContext } from '../hooks/useAuthContext'
 
+//Home page
 const Home = () => {
     const [workouts, setWorkouts] = useState(null)
     const [isPending, setIsPending] = useState(true)

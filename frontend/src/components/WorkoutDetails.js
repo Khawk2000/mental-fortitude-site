@@ -1,11 +1,9 @@
 
 
-//Need to make separate page for workout details similar to blogs 
+//displays details of a single workout
 const WorkoutDetails = ({ workout }) => {
     const {day, title, exercise} = workout
     let sets = exercise.map(a => a.sets)
-    console.log(sets)
-    //<div>{sets[index][ind].rep}x{sets[index][ind].weight}</div>
 
     return(
         <div className="workout-details">

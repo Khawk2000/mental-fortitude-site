@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import SetsForm from '../components/SetsForm';
 
+//Array used for keeping track of sets ids
 var usedNums = []
 
 const ExerciseForm = ({ exercises, title }) => {
@@ -11,6 +12,12 @@ const ExerciseForm = ({ exercises, title }) => {
     const [duration, setDuration] = useState('')
     const [distance, setDistance] = useState('')
     const [sets, setSets] = useState([])
+
+
+    //keeps track of number of sets needed to generate based on number in rounds field
+    var numSets = []
+
+    //function to get data from SetsForm with id(num)
     
     var numSets = []
 
@@ -29,8 +36,11 @@ const ExerciseForm = ({ exercises, title }) => {
             setSets([...sets, data])
             console.log(sets)
         }
+
     }
 
+    //handle click of add exercise button
+    //instead of alert have an alert message that looks better and is bigger
     const handleClick = (e) => {
         e.preventDefault()
         if (type === '' || name === '') {
@@ -52,6 +62,7 @@ const ExerciseForm = ({ exercises, title }) => {
         }   
     }
 
+    //creates the correct number of SetsForms and passes the getSets function to children
     const sendSets = (rounds) => {
         for(let i=0; i<rounds; i++){
             numSets.push(<SetsForm getSets={getSets} num={i}/>)

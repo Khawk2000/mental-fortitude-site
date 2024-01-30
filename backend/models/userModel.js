@@ -4,6 +4,8 @@ const validator = require('validator')
 
 const Schema = mongoose.Schema
 
+
+// Be sure to add first name and last name mostly just for displaying welcome back message
 const userSchema = new Schema({
     email: {
         type: String,
