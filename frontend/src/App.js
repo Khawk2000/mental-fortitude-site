@@ -14,12 +14,21 @@ import { useLogout } from './hooks/useLogout';
 function App() {
   const {user} = useAuthContext()
   const { logout } = useLogout()
-  window.addEventListener("beforeunload", (ev) => {
+  // Fix the issue when create workout is pressed page reloads and logs out
+  async function inactiveLogout() {
+    setTimeout(() => {
+      logout()
+    }, 3600000)
+  }
+
+  inactiveLogout();
+  /*window.addEventListener("beforeunload", (ev) => {
       logout()
     }
-  )
+  )*/
   return (
     <div className="App">
+      <title>Testing</title>
       <BrowserRouter>
         <Navbar/>
         <div className="pages">
