@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.83a7f99f.css",
+    "main.js": "/static/js/main.7e4fddd3.js",
+    "static/media/MF_Logo.png": "/static/media/MF_Logo.ffb18d9fb4e769301725.png",
+    "index.html": "/index.html",
+    "main.83a7f99f.css.map": "/static/css/main.83a7f99f.css.map",
+    "main.7e4fddd3.js.map": "/static/js/main.7e4fddd3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.83a7f99f.css",
+    "static/js/main.7e4fddd3.js"
+  ]
+}
