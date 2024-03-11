@@ -5,7 +5,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-
+const BASE = "https://mental-fortitude-site.onrender.com"
 
 const Navbar = () => {
     const { logout } = useLogout()
@@ -21,7 +21,7 @@ const Navbar = () => {
     }
     useEffect(() => {
         const fetchUserInfo = async () => {
-            const response = await fetch(process.env.BASE_URL + '/api/user',  {
+            const response = await fetch(BASE + '/api/user',  {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }
