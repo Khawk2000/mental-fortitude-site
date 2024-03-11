@@ -5,6 +5,8 @@ import WorkoutPreview from '../components/WorkoutPreview'
 import { Link } from 'react-router-dom'
 import { useAuthContext } from '../hooks/useAuthContext'
 
+const BASE = "https://mental-fortitude-site.onrender.com"
+
 //Home page
 const Home = () => {
     const [workouts, setWorkouts] = useState(null)
@@ -12,7 +14,7 @@ const Home = () => {
     const {user} = useAuthContext()
     useEffect(() => {
         const fetchWorkouts = async () => {
-            const response = await fetch(process.env.BASE + '/api/workouts', {
+            const response = await fetch(BASE + '/api/workouts', {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }

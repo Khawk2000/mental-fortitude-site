@@ -52,6 +52,8 @@ const CreateWorkout = () => {
         setDay(datetime)
     }
 
+    const BASE = "https://mental-fortitude-site.onrender.com"
+
     //Sent workout to database
     const postWorkout = async () => {
         if(!user){
@@ -60,7 +62,7 @@ const CreateWorkout = () => {
             return
         }
         const workout = {day, title, exercise: listExercises}
-        const response = await fetch(process.env.BASE + 'api/workouts/createworkout/', {
+        const response = await fetch(BASE + 'api/workouts/createworkout/', {
             method: 'POST',
             body: JSON.stringify(workout),
             headers: {
