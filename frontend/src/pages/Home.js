@@ -32,7 +32,7 @@ const Home = () => {
         
     }, [user])
     console.log(workouts)
-    const createURL = BASE + '/createworkout'
+
     return (
         <div className="home">
             <div className="workouts">
@@ -45,7 +45,7 @@ const Home = () => {
                     </a>
                 ))}
                 <div className="center-button">
-                    <a href={createURL} className='create-button'>Create Workout</a>
+                    <a href='/createworkout' className='create-button'>Create Workout</a>
                 </div>
             </div>
         </div>
