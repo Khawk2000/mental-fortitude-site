@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import logo from "C:/Users/keegm/Workspaces/mental-fortitude-site/frontend/src/MF_Logo.png"
+import logo from "../MF_Logo.png"
 import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useNavigate } from 'react-router-dom';
