@@ -6,8 +6,11 @@ import { faHouse, faTrash, faPencil } from '@fortawesome/free-solid-svg-icons'
 import { useAuthContext } from '../hooks/useAuthContext';
 
 
+
 //components
 import WorkoutDetails from '../components/WorkoutDetails'
+
+const BASE = "https://mental-fortitude-site.onrender.com"
 
 //Displaying single workout page
 const SingleWorkout = () => {
@@ -19,7 +22,7 @@ const SingleWorkout = () => {
 
     useEffect(() => {
         const fetchWorkout = async () => {
-            const response = await fetch('/api/workouts/' + id, {
+            const response = await fetch(BASE + '/api/workouts/' + id, {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }
