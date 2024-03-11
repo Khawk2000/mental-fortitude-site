@@ -34,7 +34,7 @@ const EditWorkout = () => {
 
     useEffect(() => {
         const fetchWorkout = async () => {
-            const response = await fetch(process.env.BASE_URL + '/api/workouts/' + id, {
+            const response = await fetch('/api/workouts/' + id, {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }
@@ -59,7 +59,7 @@ const EditWorkout = () => {
         console.log(editedExercises)
         const editWorkout = {day:workout.day, title:title, exercise:editedExercises}
         console.log(editWorkout)
-            const response = await fetch(process.env.BASE_URL + '/api/workouts/' + id, {
+            const response = await fetch('/api/workouts/' + id, {
                 method: 'PATCH',
                 body: JSON.stringify(editWorkout),
                 headers: {

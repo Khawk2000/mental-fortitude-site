@@ -19,7 +19,7 @@ const SingleWorkout = () => {
 
     useEffect(() => {
         const fetchWorkout = async () => {
-            const response = await fetch(process.env.BASE_URL + '/api/workouts/' + id, {
+            const response = await fetch('/api/workouts/' + id, {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }
@@ -37,7 +37,7 @@ const SingleWorkout = () => {
         if(!user){
             return
         }
-            const response = await fetch(process.env.BASE_URL + 'api/workouts/' + id, {
+            const response = await fetch('api/workouts/' + id, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${user.token}`

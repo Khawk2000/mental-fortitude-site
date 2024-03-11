@@ -59,7 +59,7 @@ const CreateWorkout = () => {
             return
         }
         const workout = {day, title, exercise: listExercises}
-        const response = await fetch(process.env.BASE_URL + 'api/workouts/createworkout/', {
+        const response = await fetch('api/workouts/createworkout/', {
             method: 'POST',
             body: JSON.stringify(workout),
             headers: {
