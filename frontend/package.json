@@ -1,6 +1,6 @@
 {
   "homepage": "http://mentalfortitudellc.com",
-  "proxy": "http://localhost:4000",
+  "proxy": "https://mental-fortitude-site.onrender.com",
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
