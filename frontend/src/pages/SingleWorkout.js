@@ -40,7 +40,7 @@ const SingleWorkout = () => {
         if(!user){
             return
         }
-            const response = await fetch(BASE + 'api/workouts/' + id, {
+            const response = await fetch(BASE + '/api/workouts/' + id, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${user.token}`

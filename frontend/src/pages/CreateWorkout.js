@@ -62,7 +62,7 @@ const CreateWorkout = () => {
             return
         }
         const workout = {day, title, exercise: listExercises}
-        const response = await fetch(BASE + 'api/workouts/createworkout/', {
+        const response = await fetch(BASE + '/api/workouts/createworkout/', {
             method: 'POST',
             body: JSON.stringify(workout),
             headers: {
