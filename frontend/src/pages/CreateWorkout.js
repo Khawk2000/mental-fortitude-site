@@ -5,6 +5,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import ExerciseForm from '../components/ExerciseForm';
 
 
+
 const CreateWorkout = () => {
     const navigate = useNavigate()
     const [exercise, setExercise] = useState(null)
@@ -59,7 +60,7 @@ const CreateWorkout = () => {
             return
         }
         const workout = {day, title, exercise: listExercises}
-        const response = await fetch('api/workouts/createworkout/', {
+        const response = await fetch(process.env.BASE + 'api/workouts/createworkout/', {
             method: 'POST',
             body: JSON.stringify(workout),
             headers: {

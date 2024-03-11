@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 
-const BASE = "https://mental-fortitude-site.onrender.com"
+
 
 //Logging in a user
 export const useLogin = () => {
@@ -13,7 +13,7 @@ export const useLogin = () => {
         setIsLoading(true)
         setError(null)
 
-        const response = await fetch(BASE + '/api/user/login', {
+        const response = await fetch(process.env.BASE + '/api/user/login', {
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify({email, password})

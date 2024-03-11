@@ -10,7 +10,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 //components
 import WorkoutDetails from '../components/WorkoutDetails'
 
-const BASE = "https://mental-fortitude-site.onrender.com"
+
 
 //Displaying single workout page
 const SingleWorkout = () => {
@@ -22,7 +22,7 @@ const SingleWorkout = () => {
 
     useEffect(() => {
         const fetchWorkout = async () => {
-            const response = await fetch(BASE + '/api/workouts/' + id, {
+            const response = await fetch(process.env.BASE + '/api/workouts/' + id, {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }
