@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import WorkoutPreview from '../components/WorkoutPreview'
 import { Link } from 'react-router-dom'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { useNavigate } from 'react-router-dom';
 
 const BASE = "https://mental-fortitude-site.onrender.com"
 
@@ -12,6 +13,7 @@ const Home = () => {
     const [workouts, setWorkouts] = useState(null)
     const [isPending, setIsPending] = useState(true)
     const {user} = useAuthContext()
+    const navigate = useNavigate()
     useEffect(() => {
         const fetchWorkouts = async () => {
             const response = await fetch(BASE + '/api/workouts', {
@@ -33,6 +35,11 @@ const Home = () => {
     }, [user])
     console.log(workouts)
 
+
+    const handleCreate = () =>{
+        navigate('/createworkout')
+    }
+
     return (
         <div className="home">
             <div className="workouts">
@@ -45,7 +52,7 @@ const Home = () => {
                     </a>
                 ))}
                 <div className="center-button">
-                    <a href='/createworkout' className='create-button'>Create Workout</a>
+                    <button onClick={handleCreate} className='create-button'>Create Workout</button>
                 </div>
             </div>
         </div>
