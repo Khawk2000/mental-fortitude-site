@@ -12,7 +12,6 @@ const Navbar = () => {
     const { user } = useAuthContext()
     const [userInfo, setUserInfo] = useState()
     const navigate = useNavigate()
-    console.log(user)
 
     //handles logout button click
     const handleClick = () => {
@@ -37,7 +36,6 @@ const Navbar = () => {
         }
         
     }, [user])
-    console.log(userInfo)
     
     return (
         <header>

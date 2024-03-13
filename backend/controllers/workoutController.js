@@ -45,7 +45,6 @@ const createWorkout = async (req, res) => {
     // add doc to db
     try{
         const user_id = req.user._id
-        console.log(user_id)
         const workout = await Workout.create({user_id, day, title, exercise, type, name, rounds, duration, distance, reps, weight})
         res.status(200).json(workout)
     } catch (error) {

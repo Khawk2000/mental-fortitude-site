@@ -48,7 +48,6 @@ const EditWorkout = () => {
             }
         }
         fetchWorkout()
-        console.log(editedExercises)
     }, [id, user, editedExercises])
 
     const handleEdit = async () => {
@@ -96,7 +95,6 @@ const EditWorkout = () => {
 
     const getEditSets = (data, num) => {
         if(usedNums.includes(num)){
-            console.log('is in nums')
             const nextEdits = sets.map((d, i) => {
                 if(i === num){
                     return data
@@ -108,10 +106,7 @@ const EditWorkout = () => {
             })
             setSets(nextEdits)
         }else{
-            console.log('not in nums')
             usedNums.push(num)
-            console.log(usedNums)
-            console.log(data)
             setSets([...sets, data])
 
         }

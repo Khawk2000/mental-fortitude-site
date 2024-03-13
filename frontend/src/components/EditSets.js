@@ -9,7 +9,6 @@ const EditSets = ({ getEditSets, currSets, num }) => {
     const [enabled, setEnabled] = useState(true)
 
     useEffect(() => {
-        console.log(currSets)
         setEnabled(true)
         setRep(currSets[num].rep)
         setWeight(currSets[num].weight)
@@ -19,7 +18,6 @@ const EditSets = ({ getEditSets, currSets, num }) => {
     const handleClick = (e) => {
         e.preventDefault()
         let data = { rep, weight }
-        console.log('edit sets data', data)
         setEnabled(false)
         getEditSets(data, num)
     }

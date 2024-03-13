@@ -33,7 +33,6 @@ const Home = () => {
         }
         
     }, [user])
-    console.log(workouts)
 
 
     const handleCreate = () =>{

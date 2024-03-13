@@ -22,7 +22,6 @@ const ExerciseForm = ({ exercises, title }) => {
 
     const getSets = (data, num) => {
         if(usedNums.includes(num)){
-            console.log('is in nums')
             const nextSets = sets.map((d, i) => {
                 if(i === num){
                     return data
@@ -32,11 +31,8 @@ const ExerciseForm = ({ exercises, title }) => {
             })
             setSets(nextSets)
         } else {
-            console.log('not in nums')
             usedNums.push(num)
-            console.log(data)
             setSets([...sets, data])
-            console.log(sets)
         }
 
     }
@@ -48,7 +44,6 @@ const ExerciseForm = ({ exercises, title }) => {
         if (type === '' || name === '') {
             alert('Type and Name are both required fields for each exercise')
         } else {
-            console.log(sets)
             let data = { type, name, duration, distance, sets }
             exercises(data)
             setSets([])

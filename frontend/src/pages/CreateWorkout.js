@@ -4,7 +4,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 
 import ExerciseForm from '../components/ExerciseForm';
 
-
+const BASE = "https://mental-fortitude-site.onrender.com"
 
 const CreateWorkout = () => {
     const navigate = useNavigate()
@@ -22,7 +22,6 @@ const CreateWorkout = () => {
             setListExercises([...listExercises, exercise])
             setExercise(null)
         }
-        console.log(listExercises)
     }, [exercise, listExercises])
 
     //Confirming title and day and time for the new workout
@@ -52,7 +51,7 @@ const CreateWorkout = () => {
         setDay(datetime)
     }
 
-    const BASE = "https://mental-fortitude-site.onrender.com"
+
 
     //Sent workout to database
     const postWorkout = async () => {
