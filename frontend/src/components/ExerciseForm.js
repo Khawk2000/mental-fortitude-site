@@ -114,6 +114,7 @@ const ExerciseForm = ({ exercises, title }) => {
                             {type === "Lift" && <label>Number of Sets for Exercise: </label>}
                             {type === "Lift" &&
                             <input type="number"
+                                min={1}
                                 onChange={(e) => setRounds(e.target.value)}
                                 value={rounds}
                             />}
