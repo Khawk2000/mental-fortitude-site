@@ -11,6 +11,8 @@ const ExerciseForm = ({ exercises, title }) => {
     const [rounds, setRounds] = useState('')
     const [duration, setDuration] = useState('')
     const [distance, setDistance] = useState('')
+    const [hours, setHours] = useState('')
+    const [min, setMin] = useState('')
     const [sets, setSets] = useState([])
 
 
@@ -20,9 +22,9 @@ const ExerciseForm = ({ exercises, title }) => {
     var usedNums = []
     //function to get data from SetsForm with id(num)
 
+
     const getSets = (data, num) => {
         if(usedNums.includes(num)){
-            console.log('is in nums')
             const nextSets = sets.map((d, i) => {
                 if(i === num){
                     return data
@@ -32,11 +34,8 @@ const ExerciseForm = ({ exercises, title }) => {
             })
             setSets(nextSets)
         } else {
-            console.log('not in nums')
             usedNums.push(num)
-            console.log(data)
             setSets([...sets, data])
-            console.log(sets)
         }
 
     }
@@ -48,7 +47,6 @@ const ExerciseForm = ({ exercises, title }) => {
         if (type === '' || name === '') {
             alert('Type and Name are both required fields for each exercise')
         } else {
-            console.log(sets)
             let data = { type, name, duration, distance, sets }
             exercises(data)
             setSets([])
@@ -57,6 +55,8 @@ const ExerciseForm = ({ exercises, title }) => {
             setRounds('')
             setDuration('')
             setDistance('')
+            setMin('')
+            setHours('')
             var selectBox = document.getElementById('exercise-type');
             selectBox.selectedIndex = 0
             alert("Exercise added to workout, add more if you need")
@@ -98,11 +98,19 @@ const ExerciseForm = ({ exercises, title }) => {
                     </div>
                     <div className="eform-row">
                         <div className="eform-col-1">
-                            {type === "Cardio" && <label>Duration of exercise in minutes: </label>}
+                            {type === "Cardio" && <label>Duration of exercise (hours): </label>}
                             {type === "Cardio" && <input
                                 type="number"
-                                onChange={(e) => setDuration(e.target.value)}
-                                value={duration}
+                                onChange={(e) => setHours(e.target.value)}
+                                value={hours}
+                            />} 
+                            {type === "Cardio" && <label>Duration of exercise (minutes): </label>}
+                            {type === "Cardio" && <input
+                                type="number"
+                                onChange={(e) => {setMin(e.target.value)
+                                setDuration(Number(e.target.value) + (hours * 60))
+                            }}
+                                value={min}
                             />} 
                         </div>
                         <div className="eform-col-2">
@@ -119,6 +127,7 @@ const ExerciseForm = ({ exercises, title }) => {
                             {type === "Lift" && <label>Number of Sets for Exercise: </label>}
                             {type === "Lift" &&
                             <input type="number"
+                                min={1}
                                 onChange={(e) => setRounds(e.target.value)}
                                 value={rounds}
                             />}
